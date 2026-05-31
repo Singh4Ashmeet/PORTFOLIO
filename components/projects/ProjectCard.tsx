@@ -1,6 +1,12 @@
 "use client";
 
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import {
+  motion,
+  useMotionValue,
+  useReducedMotion,
+  useSpring,
+  useTransform,
+} from "framer-motion";
 import { ArrowUpRight, ExternalLink } from "lucide-react";
 import Link from "next/link";
 import { useRef } from "react";
@@ -12,28 +18,29 @@ import type { Project } from "@/lib/types";
 export function ProjectCard({ project }: { project: Project }) {
   const cardRef = useRef<HTMLElement>(null);
   const mouse = useMousePosition(cardRef);
+  const prefersReducedMotion = useReducedMotion();
   const rotateX = useMotionValue(0);
   const rotateY = useMotionValue(0);
   const springRotateX = useSpring(rotateX, { stiffness: 160, damping: 26 });
   const springRotateY = useSpring(rotateY, { stiffness: 160, damping: 26 });
   const glowOpacity = useTransform(
     springRotateX,
-    [-8, 0, 8],
-    [0.7, mouse.active ? 1 : 0, 0.7],
+    [-3, 0, 3],
+    [0.45, mouse.active ? 0.72 : 0, 0.45],
   );
   const externalGithub = project.githubUrl.startsWith("http");
 
   function onPointerMove(event: PointerEvent<HTMLElement>) {
     const node = cardRef.current;
-    if (!node || event.pointerType === "touch") {
+    if (!node || event.pointerType === "touch" || prefersReducedMotion) {
       return;
     }
 
     const rect = node.getBoundingClientRect();
     const relativeX = (event.clientX - rect.left) / rect.width - 0.5;
     const relativeY = (event.clientY - rect.top) / rect.height - 0.5;
-    rotateY.set(relativeX * 7);
-    rotateX.set(relativeY * -7);
+    rotateY.set(relativeX * 3);
+    rotateX.set(relativeY * -3);
   }
 
   function onPointerLeave() {

@@ -122,7 +122,7 @@ export function Navbar() {
         <button
           className="grid h-11 w-11 place-items-center rounded-card border border-white/[0.12] text-white md:hidden"
           type="button"
-          aria-label={open ? "Close menu" : "Open menu"}
+          aria-label={open ? "Close navigation menu" : "Open navigation menu"}
           aria-expanded={open}
           onClick={() => setOpen((value) => !value)}
         >
@@ -147,6 +147,8 @@ export function Navbar() {
               onClick={() => setOpen(false)}
             />
             <motion.div
+              role="navigation"
+              aria-label="Mobile navigation"
               className="fixed right-4 top-24 w-[min(24rem,calc(100vw-2rem))] rounded-card border border-white/[0.09] bg-surface/95 p-7 shadow-[0_28px_110px_rgba(0,0,0,0.6)] backdrop-blur-xl md:hidden"
               initial={{ opacity: 0, x: 48 }}
               animate={{ opacity: 1, x: 0 }}

@@ -13,7 +13,7 @@ type MagneticWrapperProps = Omit<HTMLMotionProps<"div">, "children"> & {
 export function MagneticWrapper({
   children,
   className,
-  strength = 0.08,
+  strength = 0.04,
   ...props
 }: MagneticWrapperProps) {
   const magnetic = useMagneticHover<HTMLDivElement>({ strength });

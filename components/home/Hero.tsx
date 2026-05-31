@@ -18,12 +18,12 @@ const codeLines = [
 
 function AnimatedWord({ word, delay = 0 }: { word: string; delay?: number }) {
   return (
-    <span className="block overflow-hidden whitespace-nowrap pb-[0.08em] leading-[1.02]">
+    <span className="block overflow-hidden whitespace-nowrap pb-[0.16em] leading-[1.08]">
       {word.split("").map((char, index) => (
         <motion.span
           key={`${word}-${char}-${index}`}
           className="inline-block"
-          initial={{ y: 96, opacity: 0 }}
+          initial={{ y: "0.9em", opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{
             duration: 0.72,
@@ -61,7 +61,7 @@ export function Hero() {
         className="absolute bottom-48 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent/45 to-transparent"
       />
 
-      <div className="container-page relative z-10 grid min-h-[calc(100vh-6rem)] grid-cols-1 items-center gap-10 pb-32 pt-6 lg:grid-cols-[minmax(0,0.95fr)_minmax(320px,400px)] lg:gap-8 lg:pt-10 xl:grid-cols-[minmax(0,0.9fr)_minmax(340px,420px)_minmax(260px,0.62fr)] xl:gap-9">
+      <div className="container-page relative z-10 grid min-h-[calc(100svh-6rem)] grid-cols-1 items-center gap-10 pb-36 pt-6 lg:grid-cols-[minmax(0,0.95fr)_minmax(300px,380px)] lg:gap-8 lg:pt-8 xl:grid-cols-[minmax(0,0.78fr)_minmax(300px,380px)_minmax(320px,0.62fr)] xl:gap-5 2xl:gap-8 min-[1700px]:grid-cols-[minmax(540px,0.86fr)_minmax(320px,390px)_minmax(330px,0.56fr)]">
         <motion.div
           initial="hidden"
           animate="visible"
@@ -71,7 +71,7 @@ export function Hero() {
             <span>01</span>
             <span className="h-px w-12 bg-accent/70" aria-hidden="true" />
           </div>
-          <h1 className="display-heading max-w-none text-balance xl:text-[6.4rem]">
+          <h1 className="display-heading max-w-none text-balance text-[3.75rem] sm:text-[4.6rem] md:text-[5.5rem] xl:text-[5.25rem] 2xl:text-[5.9rem]">
             {profile.hero.primaryWords.map((word, index) => (
               <AnimatedWord key={word} word={word} delay={0.15 + index * 0.1} />
             ))}
@@ -91,13 +91,13 @@ export function Hero() {
         </motion.div>
 
         <motion.div
-          className="order-2 mx-auto w-full max-w-[320px] sm:max-w-[380px] lg:order-2 lg:max-w-[420px]"
+          className="order-2 mx-auto w-full max-w-[300px] sm:max-w-[360px] lg:order-2 lg:max-w-[380px] min-[1700px]:max-w-[420px]"
           style={{ y: portraitY }}
           initial={{ opacity: 0, scale: 0.92 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.2, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
-          <div className="relative mx-auto aspect-[4/5] max-h-[560px] overflow-visible">
+          <div className="relative mx-auto aspect-[4/5] max-h-[min(540px,calc(100svh-14rem))] min-h-[360px] overflow-visible max-sm:min-h-0">
             <div
               className="absolute inset-4 translate-x-8 translate-y-8 rounded-card border border-accent/20"
               aria-hidden="true"
@@ -135,7 +135,7 @@ export function Hero() {
             <span className="h-px w-12 bg-accent/70" aria-hidden="true" />
             <span>build</span>
           </div>
-          <div className="whitespace-nowrap font-mono text-[clamp(2rem,2.2vw,2.85rem)] leading-none text-white">
+          <div className="whitespace-nowrap font-mono text-3xl leading-none text-white sm:text-4xl xl:text-[2rem] 2xl:text-[2.55rem] min-[1700px]:text-[2.85rem]">
             {tag.split("").map((char, index) => (
               <motion.span
                 key={`${char}-${index}`}
@@ -153,10 +153,10 @@ export function Hero() {
               transition={{ duration: 1, repeat: Infinity }}
             />
           </div>
-          <div className="mt-8 overflow-hidden rounded-card border border-white/[0.08] bg-background/55 p-5 text-left font-mono text-[12px] leading-7 text-secondary shadow-[0_0_50px_rgba(0,0,0,0.4)] backdrop-blur-sm">
+          <div className="mt-8 overflow-x-auto rounded-card border border-white/[0.08] bg-background/55 p-5 text-left font-mono text-[11px] leading-7 text-secondary shadow-[0_0_50px_rgba(0,0,0,0.4)] backdrop-blur-sm sm:text-[12px]">
             {codeLines.map((line, index) => (
-              <p key={line} className="whitespace-pre-wrap break-words">
-                <span className="mr-4 text-muted">
+              <p key={line} className="min-w-max whitespace-pre">
+                <span className="mr-4 inline-block w-5 text-muted">
                   {String(index + 1).padStart(2, "0")}
                 </span>
                 {line}
