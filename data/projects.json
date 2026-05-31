@@ -34,45 +34,45 @@
       "Conversational chatbot via Ollama LLM for natural language loan queries"
     ],
     "featured": true,
-    "githubUrl": "#",
+    "githubUrl": "https://github.com/Singh4Ashmeet/ET_CREDGEN",
     "demoUrl": null
   },
   {
     "id": 3,
-    "slug": "linguai",
-    "title": "LinguAI",
-    "subtitle": "Adaptive AI Language Tutor",
-    "description": "Full-stack platform with personalised AI-generated language exercises",
-    "tags": ["FastAPI", "React", "Redux", "JWT", "Gemini API"],
-    "metric": "30% faster load time",
+    "slug": "raid-nexus",
+    "title": "RAID Nexus",
+    "subtitle": "Autonomous Ambulance Dispatch System",
+    "description": "Real-time incident dispatch platform for Indian city ambulance operations",
+    "tags": ["FastAPI", "React", "WebSocket", "Docker", "SQLite"],
+    "metric": "WebSocket live dispatch",
     "role": "Solo Developer",
-    "timeline": "2024",
+    "timeline": "2026",
     "outcomes": [
-      "10+ RESTful API endpoints with JWT auth and role-based access control",
-      "Vite optimisation cut frontend load time by 30%",
-      "Gemini API generates personalised grammar and vocabulary drills per learner"
+      "React command center backed by FastAPI APIs and WebSocket live updates",
+      "Deterministic AI fallbacks keep dispatch explainability available without optional ML/LLM services",
+      "Docker Compose and start.py keep the frontend, API, and local demo flow reproducible"
     ],
     "featured": true,
-    "githubUrl": "#",
+    "githubUrl": "https://github.com/Singh4Ashmeet/RAIDS_VIHAN",
     "demoUrl": null
   },
   {
     "id": 4,
-    "slug": "multi-digit-recognition",
-    "title": "Multi-Digit Handwriting Recognition",
-    "subtitle": "CNN on MNIST",
-    "description": "Real-time handwritten digit recognition with custom segmentation pipeline",
-    "tags": ["TensorFlow", "Keras", "CNN", "MNIST"],
-    "metric": "98% accuracy",
+    "slug": "solarai",
+    "title": "SolarAI",
+    "subtitle": "Solar Efficiency Predictor",
+    "description": "AI-powered solar efficiency prediction with sun-path, ROI, and report workflows",
+    "tags": ["Python", "Gradient Boosting", "Three.js", "Open-Meteo"],
+    "metric": "0.995 R2 model score",
     "role": "Solo Developer",
-    "timeline": "2023",
+    "timeline": "2026",
     "outcomes": [
-      "CNN achieving 98% accuracy on 60,000-sample MNIST dataset",
-      "End-to-end inference in under 2 seconds",
-      "Custom segmentation pipeline isolates individual digits pre-inference"
+      "Gradient Boosting model uses 33 engineered features for solar efficiency prediction",
+      "Three.js sun-path visualisation, ROI analysis, and PDF reports support planning decisions",
+      "Open-Meteo weather data and material discovery connect site context with photovoltaic scoring"
     ],
     "featured": false,
-    "githubUrl": "#",
+    "githubUrl": "https://github.com/Singh4Ashmeet/solar_updatedd",
     "demoUrl": null
   }
 ]

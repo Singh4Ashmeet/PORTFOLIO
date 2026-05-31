@@ -27,32 +27,32 @@
     ],
     "codeSnippet": "result = await underwriting_graph.run(application)\nif result.flags:\n    return explain_risk(result, applicant_context)\nreturn chatbot.reply(result.summary)"
   },
-  "linguai": {
-    "problem": "Learners need adaptive language practice without every grammar and vocabulary exercise being manually authored.",
+  "raid-nexus": {
+    "problem": "Ambulance dispatch teams need live incident visibility, fast routing decisions, and explainable fallback behavior when optional AI services are unavailable.",
     "architecture": [
-      "FastAPI exposes authenticated learner, progress, and exercise endpoints.",
-      "React and Redux manage session state, learner context, and generated tasks.",
-      "Gemini API generates grammar and vocabulary drills based on learner level."
+      "React command center displays incidents, units, route recommendations, and live status.",
+      "FastAPI APIs coordinate dispatch decisions and publish WebSocket updates.",
+      "Docker Compose runs the local stack while SQLite demo mode keeps onboarding lightweight."
     ],
     "decisions": [
-      "Use JWT and role-based access control to separate learner and admin flows.",
-      "Keep AI generation scoped to exercise creation for predictable UX.",
-      "Use Vite optimisation to reduce frontend load time across repeat sessions."
+      "Keep deterministic AI fallbacks so dispatch behavior remains explainable.",
+      "Preserve local SQLite demo mode while leaving a PostgreSQL production upgrade path.",
+      "Use a root start.py flow so the multi-service stack can be launched consistently."
     ],
-    "codeSnippet": "const exercise = await api.generateExercise({\n  level: learner.level,\n  focus: activeSkill,\n  mistakes: recentErrors\n});"
+    "codeSnippet": "dispatch = planner.assign_unit(incident, available_units)\nawait websocket_bus.publish({\n  \"incident\": incident.id,\n  \"unit\": dispatch.unit_id,\n  \"eta\": dispatch.eta\n})"
   },
-  "multi-digit-recognition": {
-    "problem": "Single-digit classifiers do not solve real handwritten input unless multiple digits are segmented before inference.",
+  "solarai": {
+    "problem": "Solar planning decisions are hard to compare when efficiency prediction, sun-path context, weather, financial analysis, and material scoring live in separate tools.",
     "architecture": [
-      "Preprocessing isolates digit regions from handwritten input.",
-      "A TensorFlow/Keras CNN classifies each segmented candidate.",
-      "The inference path returns a combined prediction in under two seconds."
+      "Python feature engineering turns site and panel inputs into model-ready signals.",
+      "Gradient Boosting predicts solar panel efficiency from engineered features.",
+      "Three.js visualises sun path while reporting workflows combine ROI, weather, and material data."
     ],
     "decisions": [
-      "Focus on segmentation quality because bad crops erase gains from model accuracy.",
-      "Use a compact CNN architecture trained on MNIST for repeatable results.",
-      "Keep inference lightweight enough for real-time demos."
+      "Use engineered features so the model captures site, weather, and panel context.",
+      "Pair prediction with ROI and CO2 reporting so results support practical decisions.",
+      "Keep weather and material discovery in the same workflow for richer recommendations."
     ],
-    "codeSnippet": "segments = segment_digits(canvas_image)\npredictions = [cnn.predict(normalize(digit)) for digit in segments]\nreturn ''.join(map(str, predictions))"
+    "codeSnippet": "features = build_solar_features(site, panel, weather)\nefficiency = model.predict(features)\nreport = build_roi_report(efficiency, site)"
   }
 }

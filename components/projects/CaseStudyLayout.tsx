@@ -1,4 +1,5 @@
 import { ExternalLink, Github } from "lucide-react";
+import { ArchitectureDiagram } from "@/components/projects/ArchitectureDiagram";
 import { Badge } from "@/components/ui/Badge";
 import { MotionReveal } from "@/components/ui/Motion";
 import { SectionLabel } from "@/components/ui/SectionLabel";
@@ -12,7 +13,8 @@ export function CaseStudyLayout({
   project: Project;
   caseStudy: CaseStudy;
 }) {
-  const externalGithub = project.githubUrl.startsWith("http");
+  const hasGithub = project.githubUrl !== "#";
+  const externalGithub = hasGithub && project.githubUrl.startsWith("http");
 
   return (
     <article className="container-page section-y">
@@ -34,9 +36,10 @@ export function CaseStudyLayout({
 
           <section>
             <SectionLabel>Architecture</SectionLabel>
-            <div className="mt-4 grid min-h-[200px] place-items-center rounded-card border border-dashed border-white/25 bg-surface p-8 text-center font-mono text-[11px] uppercase tracking-[2px] text-muted">
-              architecture diagram
-            </div>
+            <ArchitectureDiagram
+              slug={project.slug}
+              architecture={caseStudy.architecture}
+            />
             <ul className="mt-5 grid gap-3">
               {caseStudy.architecture.map((item) => (
                 <li
@@ -106,14 +109,20 @@ export function CaseStudyLayout({
             <div className="mt-8 border-t border-white/[0.06] pt-6">
               <SectionLabel>Links</SectionLabel>
               <div className="mt-4 grid gap-3">
-                <a
-                  href={project.githubUrl}
-                  target={externalGithub ? "_blank" : undefined}
-                  rel={externalGithub ? "noopener noreferrer" : undefined}
-                  className="inline-flex min-h-11 items-center justify-between rounded-button border border-white/10 px-4 font-mono text-[11px] uppercase tracking-[1.5px] text-secondary hover:text-white"
-                >
-                  GitHub <Github className="h-4 w-4" aria-hidden="true" />
-                </a>
+                {hasGithub ? (
+                  <a
+                    href={project.githubUrl}
+                    target={externalGithub ? "_blank" : undefined}
+                    rel={externalGithub ? "noopener noreferrer" : undefined}
+                    className="inline-flex min-h-11 items-center justify-between rounded-button border border-white/10 px-4 font-mono text-[11px] uppercase tracking-[1.5px] text-secondary hover:text-white"
+                  >
+                    GitHub <Github className="h-4 w-4" aria-hidden="true" />
+                  </a>
+                ) : (
+                  <p className="rounded-card border border-white/[0.06] px-4 py-3 font-mono text-[11px] uppercase tracking-[1.5px] text-muted">
+                    Repository link pending
+                  </p>
+                )}
                 {project.demoUrl ? (
                   <a
                     href={project.demoUrl}

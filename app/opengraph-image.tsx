@@ -45,7 +45,7 @@ export default function Image() {
           Backend & AI Engineer
         </div>
         <div style={{ marginTop: 28, color: "#7dd3fc", fontSize: 28 }}>
-          GuardAxis · CREDGEN AI · LinguAI
+          GuardAxis · CREDGEN AI · RAID Nexus
         </div>
       </div>
     </div>,

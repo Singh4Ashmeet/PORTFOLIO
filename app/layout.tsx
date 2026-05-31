@@ -43,7 +43,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Ashmeet Singh — Backend & AI Engineer",
     description:
-      "GuardAxis · CREDGEN AI · LinguAI — production-grade AI systems",
+      "GuardAxis · CREDGEN AI · RAID Nexus — production-grade AI systems",
     url: "https://ashmeetsingh.dev",
     siteName: "Ashmeet Singh",
     images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
