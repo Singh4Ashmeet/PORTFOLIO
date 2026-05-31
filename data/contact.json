@@ -1,0 +1,13 @@
+{
+  "subjects": ["Hiring Inquiry", "Collaboration", "Open Source", "Other"],
+  "fields": {
+    "name": "Name",
+    "email": "Email",
+    "subject": "Subject",
+    "message": "Message"
+  },
+  "button": "send message",
+  "loading": "sending",
+  "success": "Message sent! I'll get back to you soon.",
+  "messageHelp": "Message must be at least 20 characters."
+}

@@ -1,0 +1,75 @@
+{
+  "name": "Ashmeet Singh",
+  "role": "Backend & AI Engineer",
+  "hero": {
+    "leftLabel": "Backend & AI Engineer",
+    "primaryWords": ["backend", "engineer"],
+    "bio": "Building production-grade AI systems\nwith FastAPI · React · LLMs · Docker",
+    "rightTagline": "GuardAxis · CREDGEN AI · LinguAI\nGTBIT Delhi · B.Tech CSE 2025–29",
+    "openToWork": "#OpenToWork",
+    "scrollLabel": "scroll to explore",
+    "projectCta": "view projects →",
+    "cvCta": "view résumé"
+  },
+  "about": {
+    "tagline": "CS undergraduate at GTBIT Delhi building production-grade AI systems with FastAPI, React, LLM orchestration, Docker and measurable product outcomes.",
+    "bio": "I build backend-heavy AI products that turn messy workflows into reliable software: security scoring, underwriting automation, adaptive learning, and computer vision inference. My work is shaped for recruiters and technical reviewers who care about architecture, product proof, and measurable outcomes."
+  },
+  "location": "Delhi, India",
+  "email": "ashmeet.singh.talwar1@gmail.com",
+  "phone": "+91 98705 33489",
+  "education": {
+    "degree": "B.Tech Computer Science and Engineering",
+    "school": "Guru Tegh Bahadur Institute of Technology, Delhi",
+    "timeline": "Aug 2025 – Jun 2029",
+    "coursework": "OOP (C), DBMS, Computer Networks, Applied Mathematics"
+  },
+  "socials": [
+    {
+      "label": "LinkedIn",
+      "short": "li",
+      "handle": "Ashmeet Singh",
+      "href": "https://www.linkedin.com/in/ashmeet-singh-5a2a93361/"
+    },
+    {
+      "label": "GitHub",
+      "short": "gh",
+      "handle": "Singh4Ashmeet",
+      "href": "https://github.com/Singh4Ashmeet"
+    },
+    {
+      "label": "Gmail",
+      "short": "in",
+      "handle": "ashmeet.singh.talwar1@gmail.com",
+      "href": "mailto:ashmeet.singh.talwar1@gmail.com"
+    }
+  ],
+  "nav": [
+    { "label": "about", "href": "/about" },
+    { "label": "projects", "href": "/projects" },
+    { "label": "resume", "href": "/resume" },
+    { "label": "blog", "href": "/blog" },
+    { "label": "contact", "href": "/contact" }
+  ],
+  "stats": [
+    { "value": "5+", "label": "Production Projects" },
+    { "value": "80%", "label": "Underwriting Effort Saved" },
+    { "value": "98%", "label": "CNN Accuracy" },
+    { "value": "40%", "label": "Failure Impact Reduced" },
+    { "value": "Top 5%", "label": "IEEE GTBIT Selection" }
+  ],
+  "featured": {
+    "label": "selected work",
+    "title": "Featured production projects",
+    "description": "A recruiter-focused snapshot of the AI, backend, and full-stack systems with measurable outcomes."
+  },
+  "resume": {
+    "label": "résumé",
+    "url": "/resume",
+    "linkText": "download pdf ↗"
+  },
+  "footer": {
+    "tagline": "Building production-grade AI systems with FastAPI · React · LLMs · Docker",
+    "copyright": "© 2025 Ashmeet Singh · Built with Next.js + Tailwind"
+  }
+}

@@ -1,0 +1,78 @@
+[
+  {
+    "id": 1,
+    "slug": "guardaxis",
+    "title": "GuardAxis",
+    "subtitle": "AI-Powered Security Platform",
+    "description": "Real-time threat detection with 14+ detectors across 5 attack stages",
+    "tags": ["Python", "FastAPI", "React", "LLMs", "Docker"],
+    "metric": "40% failure impact reduced",
+    "role": "Solo Developer",
+    "timeline": "2024",
+    "outcomes": [
+      "4-source threat-scoring engine with 14+ detectors spanning recon to exfiltration",
+      "Multi-layer fallback logic cut cascading failure impact by 40%",
+      "Full Docker containerisation + GitHub Actions CI/CD"
+    ],
+    "featured": true,
+    "githubUrl": "#",
+    "demoUrl": null
+  },
+  {
+    "id": 2,
+    "slug": "credgen-ai",
+    "title": "CREDGEN AI",
+    "subtitle": "Intelligent Loan Assistant Chatbot",
+    "description": "5-agent orchestration system automating end-to-end loan underwriting",
+    "tags": ["FastAPI", "XGBoost", "PyOD", "Ollama", "PostgreSQL"],
+    "metric": "80% manual effort saved",
+    "role": "Solo Developer",
+    "timeline": "2024",
+    "outcomes": [
+      "5-agent orchestration: XGBoost credit scoring + PyOD anomaly detection",
+      "Slashed manual underwriting effort by 80%, processing time by 70%",
+      "Conversational chatbot via Ollama LLM for natural language loan queries"
+    ],
+    "featured": true,
+    "githubUrl": "#",
+    "demoUrl": null
+  },
+  {
+    "id": 3,
+    "slug": "linguai",
+    "title": "LinguAI",
+    "subtitle": "Adaptive AI Language Tutor",
+    "description": "Full-stack platform with personalised AI-generated language exercises",
+    "tags": ["FastAPI", "React", "Redux", "JWT", "Gemini API"],
+    "metric": "30% faster load time",
+    "role": "Solo Developer",
+    "timeline": "2024",
+    "outcomes": [
+      "10+ RESTful API endpoints with JWT auth and role-based access control",
+      "Vite optimisation cut frontend load time by 30%",
+      "Gemini API generates personalised grammar and vocabulary drills per learner"
+    ],
+    "featured": true,
+    "githubUrl": "#",
+    "demoUrl": null
+  },
+  {
+    "id": 4,
+    "slug": "multi-digit-recognition",
+    "title": "Multi-Digit Handwriting Recognition",
+    "subtitle": "CNN on MNIST",
+    "description": "Real-time handwritten digit recognition with custom segmentation pipeline",
+    "tags": ["TensorFlow", "Keras", "CNN", "MNIST"],
+    "metric": "98% accuracy",
+    "role": "Solo Developer",
+    "timeline": "2023",
+    "outcomes": [
+      "CNN achieving 98% accuracy on 60,000-sample MNIST dataset",
+      "End-to-end inference in under 2 seconds",
+      "Custom segmentation pipeline isolates individual digits pre-inference"
+    ],
+    "featured": false,
+    "githubUrl": "#",
+    "demoUrl": null
+  }
+]

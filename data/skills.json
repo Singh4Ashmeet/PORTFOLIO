@@ -1,0 +1,24 @@
+{
+  "Languages": ["Python", "C/C++", "JavaScript", "SQL", "HTML", "CSS"],
+  "Backend": [
+    "FastAPI",
+    "Flask",
+    "SQLAlchemy",
+    "REST APIs",
+    "JWT",
+    "WebSockets"
+  ],
+  "Frontend": ["React", "Tailwind CSS", "Vite"],
+  "AI / ML": [
+    "TensorFlow",
+    "Keras",
+    "Scikit-learn",
+    "XGBoost",
+    "NLP",
+    "LLM Orchestration",
+    "Ollama",
+    "Gemini API"
+  ],
+  "Databases": ["PostgreSQL", "MongoDB", "SQLite"],
+  "DevOps": ["Docker", "GitHub Actions", "CI/CD", "Render", "Git"]
+}

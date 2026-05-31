@@ -1,0 +1,35 @@
+[
+  {
+    "title": "Generative AI Foundations",
+    "issuer": "Microsoft x UpGrad",
+    "displayYear": "2024",
+    "asset": {
+      "image": "/images/certificates/generative-ai-foundations.png",
+      "pdf": "/certificates/generative-ai-foundations.pdf"
+    },
+    "description": "Foundations of generative AI, transformer models and applied AI workflows.",
+    "tags": ["Generative AI", "LLMs", "Transformers"]
+  },
+  {
+    "title": "Power BI Data Analytics",
+    "issuer": "Newton School",
+    "displayYear": "2024",
+    "asset": {
+      "image": "/images/certificates/power-bi-data-analytics.png",
+      "pdf": "/certificates/power-bi-data-analytics.pdf"
+    },
+    "description": "Data visualization, dashboards and analytics fundamentals using Power BI.",
+    "tags": ["Power BI", "Analytics", "Dashboards"]
+  },
+  {
+    "title": "Python for Data Science",
+    "issuer": "IBM",
+    "displayYear": "2024",
+    "asset": {
+      "image": "/images/certificates/python-for-data-science-ibm.png",
+      "pdf": "/certificates/python-for-data-science-ibm.pdf"
+    },
+    "description": "Python basics, data analysis, visualization and machine learning fundamentals.",
+    "tags": ["Python", "Data Science", "IBM"]
+  }
+]

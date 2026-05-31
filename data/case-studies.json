@@ -1,0 +1,58 @@
+{
+  "guardaxis": {
+    "problem": "Security tools often fail when one source degrades, leaving teams with noisy alerts and weak context during active threat stages.",
+    "architecture": [
+      "FastAPI coordinates detector execution, source scoring, and fallback branches.",
+      "React surfaces attack stage, detector confidence, and remediation context.",
+      "Docker and GitHub Actions keep local and deployment environments reproducible."
+    ],
+    "decisions": [
+      "Use a 4-source threat-scoring engine rather than depending on one detector stream.",
+      "Map 14+ detectors across reconnaissance, exploitation, persistence, lateral movement, and exfiltration.",
+      "Add multi-layer fallback logic so detector degradation does not cascade through the workflow."
+    ],
+    "codeSnippet": "async def score_threat(event):\n    signals = await detector_pool.run(event)\n    confidence = weighted_score(signals)\n    return fallback_policy(confidence, signals)"
+  },
+  "credgen-ai": {
+    "problem": "Loan underwriting becomes slow when credit scoring, anomaly review, and applicant communication happen in separate manual workflows.",
+    "architecture": [
+      "FastAPI orchestrates five agents for intake, scoring, anomaly checks, explanation, and chat response.",
+      "XGBoost handles credit scoring while PyOD flags unusual application patterns.",
+      "PostgreSQL stores applicant records and Ollama powers natural-language loan queries."
+    ],
+    "decisions": [
+      "Separate scoring and anomaly detection so each model remains independently testable.",
+      "Treat the chatbot as an explanation layer over structured underwriting state.",
+      "Prioritize measurable reductions in manual effort and processing time."
+    ],
+    "codeSnippet": "result = await underwriting_graph.run(application)\nif result.flags:\n    return explain_risk(result, applicant_context)\nreturn chatbot.reply(result.summary)"
+  },
+  "linguai": {
+    "problem": "Learners need adaptive language practice without every grammar and vocabulary exercise being manually authored.",
+    "architecture": [
+      "FastAPI exposes authenticated learner, progress, and exercise endpoints.",
+      "React and Redux manage session state, learner context, and generated tasks.",
+      "Gemini API generates grammar and vocabulary drills based on learner level."
+    ],
+    "decisions": [
+      "Use JWT and role-based access control to separate learner and admin flows.",
+      "Keep AI generation scoped to exercise creation for predictable UX.",
+      "Use Vite optimisation to reduce frontend load time across repeat sessions."
+    ],
+    "codeSnippet": "const exercise = await api.generateExercise({\n  level: learner.level,\n  focus: activeSkill,\n  mistakes: recentErrors\n});"
+  },
+  "multi-digit-recognition": {
+    "problem": "Single-digit classifiers do not solve real handwritten input unless multiple digits are segmented before inference.",
+    "architecture": [
+      "Preprocessing isolates digit regions from handwritten input.",
+      "A TensorFlow/Keras CNN classifies each segmented candidate.",
+      "The inference path returns a combined prediction in under two seconds."
+    ],
+    "decisions": [
+      "Focus on segmentation quality because bad crops erase gains from model accuracy.",
+      "Use a compact CNN architecture trained on MNIST for repeatable results.",
+      "Keep inference lightweight enough for real-time demos."
+    ],
+    "codeSnippet": "segments = segment_digits(canvas_image)\npredictions = [cnn.predict(normalize(digit)) for digit in segments]\nreturn ''.join(map(str, predictions))"
+  }
+}

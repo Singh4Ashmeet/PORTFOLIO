@@ -1,0 +1,10 @@
+.prettierignore
+.next
+node_modules
+legacy
+design
+.cursor
+public/**/*.pdf
+public/**/*.jpg
+public/**/*.png
+tsconfig.tsbuildinfo
