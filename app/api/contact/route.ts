@@ -1,7 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
 import validator from "validator";
-import contactData from "@/data/contact.json";
-
 export const runtime = "nodejs";
 
 type RateEntry = {
@@ -88,9 +86,9 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  if (!contactData.subjects.includes(subject)) {
+  if (!validator.isLength(subject, { min: 2, max: 120 })) {
     return NextResponse.json(
-      { error: "Please choose a valid subject." },
+      { error: "Subject must be between 2 and 120 characters." },
       { status: 400 },
     );
   }

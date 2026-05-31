@@ -13,7 +13,7 @@ type Toast = {
 const initialForm = {
   name: "",
   email: "",
-  subject: contactData.subjects[0],
+  subject: "",
   message: "",
   website: "",
 };
@@ -118,12 +118,13 @@ export function ContactForm() {
           type="email"
           autoComplete="email"
         />
-        <FloatingSelect
+        <FloatingInput
           id="subject"
           label={contactData.fields.subject}
           value={form.subject}
           onChange={(value) => updateForm("subject", value)}
-          options={contactData.subjects}
+          type="text"
+          autoComplete="off"
         />
         <FloatingTextarea
           id="message"
@@ -212,40 +213,6 @@ function FloatingInput({
         placeholder=" "
       />
       <span className={floatingLabelClass(value.length > 0)}>{label}</span>
-    </label>
-  );
-}
-
-function FloatingSelect({
-  id,
-  label,
-  value,
-  onChange,
-  options,
-}: {
-  id: string;
-  label: string;
-  value: string;
-  onChange: (value: string) => void;
-  options: string[];
-}) {
-  return (
-    <label htmlFor={id} className="focus-trace relative block rounded-card">
-      <select
-        id={id}
-        required
-        name={id}
-        value={value}
-        onChange={(event) => onChange(event.target.value)}
-        className="peer h-14 w-full rounded-card bg-transparent px-4 pb-2 pt-6 text-sm text-white outline-none"
-      >
-        {options.map((subject) => (
-          <option key={subject} value={subject}>
-            {subject}
-          </option>
-        ))}
-      </select>
-      <span className={floatingLabelClass(true)}>{label}</span>
     </label>
   );
 }
