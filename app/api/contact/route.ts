@@ -7,6 +7,14 @@ type RateEntry = {
   resetAt: number;
 };
 
+type SendGridError = Error & {
+  code?: number;
+  response?: {
+    statusCode?: number;
+    body?: unknown;
+  };
+};
+
 const rateLimit = new Map<string, RateEntry>();
 const WINDOW_MS = 60 * 60 * 1000;
 const MAX_SUBMISSIONS = 3;
@@ -40,6 +48,16 @@ function checkRateLimit(ip: string) {
 
 function clean(value: unknown) {
   return validator.trim(validator.stripLow(String(value ?? "")));
+}
+
+function logMailError(error: unknown) {
+  const mailError = error as SendGridError;
+  console.error("Contact email send failed", {
+    message: mailError?.message,
+    code: mailError?.code,
+    statusCode: mailError?.response?.statusCode,
+    body: mailError?.response?.body,
+  });
 }
 
 export async function POST(request: NextRequest) {
@@ -110,23 +128,35 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  const sgMail = (await import("@sendgrid/mail")).default;
-  sgMail.setApiKey(apiKey);
-
   const safeName = validator.escape(name);
   const safeSubject = validator.escape(subject);
   const safeMessage = validator.escape(message).replace(/\n/g, "<br />");
 
-  await sgMail.send({
-    to: contactEmail,
-    from: contactEmail,
-    replyTo: email,
-    subject: `Portfolio contact: ${safeSubject}`,
-    text: `Name: ${name}\nEmail: ${email}\nSubject: ${subject}\n\n${message}`,
-    html: `<p><strong>Name:</strong> ${safeName}</p><p><strong>Email:</strong> ${validator.escape(
-      email,
-    )}</p><p><strong>Subject:</strong> ${safeSubject}</p><p>${safeMessage}</p>`,
-  });
+  try {
+    const sgMail = (await import("@sendgrid/mail")).default;
+    sgMail.setApiKey(apiKey);
+
+    await sgMail.send({
+      to: contactEmail,
+      from: contactEmail,
+      replyTo: email,
+      subject: `Portfolio contact: ${safeSubject}`,
+      text: `Name: ${name}\nEmail: ${email}\nSubject: ${subject}\n\n${message}`,
+      html: `<p><strong>Name:</strong> ${safeName}</p><p><strong>Email:</strong> ${validator.escape(
+        email,
+      )}</p><p><strong>Subject:</strong> ${safeSubject}</p><p>${safeMessage}</p>`,
+    });
+  } catch (error) {
+    logMailError(error);
+
+    return NextResponse.json(
+      {
+        error:
+          "Message could not be sent right now. Please use the direct email link below.",
+      },
+      { status: 502 },
+    );
+  }
 
   return NextResponse.json({ success: true });
 }

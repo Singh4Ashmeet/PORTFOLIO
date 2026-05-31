@@ -10,6 +10,11 @@ type Toast = {
   message: string;
 } | null;
 
+type ContactResponse = {
+  success?: boolean;
+  error?: string;
+};
+
 const initialForm = {
   name: "",
   email: "",
@@ -58,13 +63,14 @@ export function ContactForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       });
-      const payload = (await response.json()) as {
-        success?: boolean;
-        error?: string;
-      };
+      const responseText = await response.text();
+      const payload = parseContactResponse(responseText);
 
       if (!response.ok || !payload.success) {
-        throw new Error(payload.error || "Unable to send message.");
+        throw new Error(
+          payload.error ||
+            "Message could not be sent right now. Please use the direct email link below.",
+        );
       }
 
       setForm(initialForm);
@@ -174,6 +180,18 @@ export function ContactForm() {
       ) : null}
     </form>
   );
+}
+
+function parseContactResponse(responseText: string): ContactResponse {
+  if (!responseText) {
+    return {};
+  }
+
+  try {
+    return JSON.parse(responseText) as ContactResponse;
+  } catch {
+    return {};
+  }
 }
 
 function floatingLabelClass(hasValue: boolean) {
