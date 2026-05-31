@@ -5,14 +5,12 @@ services:
     repo: https://github.com/Singh4Ashmeet/PORTFOLIO
     branch: main
     plan: free
-    buildCommand: npm ci && npm run build
+    buildCommand: npm ci --include=dev && npm run build
     startCommand: npm run start -- -H 0.0.0.0 -p $PORT
     autoDeploy: true
     envVars:
       - key: NODE_VERSION
         value: 20.19.0
-      - key: NODE_ENV
-        value: production
       - key: NEXT_TELEMETRY_DISABLED
         value: "1"
       - key: CONTACT_EMAIL
