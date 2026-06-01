@@ -20,8 +20,8 @@ export default function CertificationsPage() {
           Credentials &amp; certifications
         </h1>
         <p className="mt-5 max-w-xl text-sm leading-[1.8] text-secondary">
-          Industry-recognized certifications in AI, data analytics, and
-          software engineering.
+          Industry-recognized certifications in AI, data analytics, and software
+          engineering.
         </p>
       </MotionReveal>
 
