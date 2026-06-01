@@ -26,7 +26,7 @@ const spaceMono = Space_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://ashmeetsingh.dev"),
+  metadataBase: new URL("https://portfolio-q952.onrender.com"),
   title: {
     default: "Ashmeet Singh - Backend & AI Engineer",
     template: "%s | Ashmeet Singh",
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     title: "Ashmeet Singh - Backend & AI Engineer",
     description:
       "GuardAxis, CREDGEN AI, and RAID Nexus - production-grade AI systems",
-    url: "https://ashmeetsingh.dev",
+    url: "https://portfolio-q952.onrender.com",
     siteName: "Ashmeet Singh",
     images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
     locale: "en_IN",

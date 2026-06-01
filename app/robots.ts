@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://ashmeetsingh.dev/sitemap.xml",
+    sitemap: "https://portfolio-q952.onrender.com/sitemap.xml",
   };
 }
