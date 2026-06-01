@@ -11,6 +11,7 @@ import { ArrowUpRight, ExternalLink } from "lucide-react";
 import Link from "next/link";
 import { useRef } from "react";
 import type { PointerEvent } from "react";
+import { ProjectVisual } from "@/components/projects/ProjectVisual";
 import { TechTag } from "@/components/ui/TechTag";
 import { useMousePosition } from "@/hooks/useMousePosition";
 import type { Project } from "@/lib/types";
@@ -52,7 +53,7 @@ export function ProjectCard({ project }: { project: Project }) {
     <div className="h-full [perspective:1000px]">
       <motion.article
         ref={cardRef}
-        className="group relative flex min-h-[360px] min-w-0 flex-col overflow-hidden rounded-card border border-white/[0.08] bg-card p-6 shadow-[0_30px_90px_rgba(0,0,0,0.24)] transition-colors duration-300 hover:border-accent/40"
+        className="group relative flex min-h-[520px] min-w-0 flex-col overflow-hidden rounded-card border border-white/[0.08] bg-card shadow-[0_30px_90px_rgba(0,0,0,0.24)] transition-colors duration-300 hover:border-accent/40"
         style={{
           rotateX: springRotateX,
           rotateY: springRotateY,
@@ -77,12 +78,20 @@ export function ProjectCard({ project }: { project: Project }) {
           <div className="absolute right-0 top-0 h-28 w-px bg-accent shadow-[0_0_18px_rgba(125,211,252,0.8)]" />
         </div>
 
-        <div className="relative mb-8 flex min-w-0 flex-col items-start justify-between gap-5 sm:flex-row">
+        <Link
+          href={`/projects/${project.slug}`}
+          className="relative block overflow-hidden border-b border-white/[0.08]"
+          aria-label={`View ${project.title} case study`}
+        >
+          <ProjectVisual project={project} compact />
+        </Link>
+
+        <div className="relative mb-8 flex min-w-0 flex-col items-start justify-between gap-5 p-6 pb-0 sm:flex-row">
           <div className="min-w-0">
             <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-accent">
-              {String(project.id).padStart(2, "0")}
+              {project.role} | {project.timeline}
             </p>
-            <h2 className="mt-6 text-3xl font-bold leading-tight text-white">
+            <h2 className="mt-4 text-3xl font-bold leading-tight text-white">
               {project.title}
             </h2>
             <p className="mt-3 text-sm leading-[1.8] text-secondary">
@@ -95,7 +104,7 @@ export function ProjectCard({ project }: { project: Project }) {
           </span>
         </div>
 
-        <ul className="relative grid gap-2 border-t border-white/[0.07] pt-5">
+        <ul className="relative mx-6 grid gap-2 border-t border-white/[0.07] pt-5">
           {project.outcomes.slice(0, 2).map((outcome) => (
             <li
               key={outcome}
@@ -107,7 +116,7 @@ export function ProjectCard({ project }: { project: Project }) {
           ))}
         </ul>
 
-        <div className="relative mt-6 flex min-w-0 flex-wrap gap-2">
+        <div className="relative mx-6 mt-6 flex min-w-0 flex-wrap gap-2">
           {project.tags.map((tag, index) => (
             <motion.span
               key={tag}
@@ -126,12 +135,12 @@ export function ProjectCard({ project }: { project: Project }) {
           ))}
         </div>
 
-        <div className="relative mt-auto flex items-center justify-between gap-4 pt-8 font-mono text-xs uppercase tracking-[0.12em]">
+        <div className="relative mt-auto flex items-center justify-between gap-4 p-6 pt-8 font-mono text-xs uppercase tracking-[0.12em]">
           <Link
             href={`/projects/${project.slug}`}
             className="trace-link text-accent"
           >
-            Case Study
+            View {project.title} case study
             <ArrowUpRight
               className="h-4 w-4 transition group-hover:translate-x-1 group-hover:-translate-y-1"
               aria-hidden="true"
@@ -144,7 +153,8 @@ export function ProjectCard({ project }: { project: Project }) {
               rel={externalGithub ? "noopener noreferrer" : undefined}
               className="inline-flex items-center gap-1 text-secondary transition hover:text-white"
             >
-              GitHub <ExternalLink className="h-3 w-3" aria-hidden="true" />
+              View GitHub repository{" "}
+              <ExternalLink className="h-3 w-3" aria-hidden="true" />
             </a>
           ) : null}
         </div>

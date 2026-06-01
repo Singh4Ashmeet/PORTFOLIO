@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { Search, SlidersHorizontal } from "lucide-react";
+import { Search, SlidersHorizontal, X } from "lucide-react";
 import { useMemo, useState } from "react";
 import { ProjectCard } from "@/components/projects/ProjectCard";
 import type { Project } from "@/lib/types";
@@ -61,74 +61,109 @@ export function ProjectFilter({
     );
   }
 
+  const hasFilters = query.trim().length > 0 || activeTags.length > 0;
+
+  function clearFilters() {
+    setQuery("");
+    setActiveTags([]);
+  }
+
   return (
     <div>
       <div className="mb-8 grid min-w-0 gap-4 lg:grid-cols-[minmax(240px,1fr)_2fr_220px] lg:items-start">
-        <label className="focus-trace relative block min-w-0 rounded-card">
-          <span className="sr-only">Search projects</span>
-          <Search
-            className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-accent"
-            aria-hidden="true"
-          />
-          <input
-            value={query}
-            onChange={(event) => setQuery(event.target.value)}
-            placeholder="search projects..."
-            className="h-12 w-full rounded-card bg-transparent pl-11 pr-4 font-mono text-[12px] text-white outline-none placeholder:text-muted"
-            type="search"
-          />
+        <label className="relative block min-w-0 rounded-card">
+          <span className="mb-2 block font-mono text-[11px] uppercase tracking-[0.14em] text-muted">
+            Search projects
+          </span>
+          <span className="focus-trace relative block rounded-card">
+            <Search
+              className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-accent"
+              aria-hidden="true"
+            />
+            <input
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+              placeholder="search projects..."
+              className="h-12 w-full rounded-card bg-transparent pl-11 pr-4 font-mono text-[12px] text-white outline-none placeholder:text-muted"
+              type="search"
+            />
+          </span>
         </label>
 
-        <div
-          className="flex min-w-0 flex-wrap gap-2"
-          aria-label="Technology filters"
-        >
-          {tags.map((tag) => {
-            const active = activeTags.includes(tag);
-            return (
-              <button
-                key={tag}
-                type="button"
-                onClick={() => toggleTag(tag)}
-                className={cn(
-                  "relative min-h-10 max-w-full overflow-hidden rounded-button border px-3 font-mono text-[10px] uppercase tracking-[0.12em] transition",
-                  active
-                    ? "border-accent/50 bg-accent text-background"
-                    : "border-white/15 bg-white/[0.025] text-muted hover:border-accent/35 hover:text-white",
-                )}
-                aria-pressed={active}
-              >
-                {active ? (
-                  <motion.span
-                    layoutId={`filter-${tag}`}
-                    className="absolute inset-x-0 bottom-0 h-px bg-white/70"
-                    aria-hidden="true"
-                  />
-                ) : null}
-                <span className="relative z-10">{tag}</span>
-              </button>
-            );
-          })}
+        <div>
+          <div className="mb-2 flex items-center justify-between gap-3">
+            <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted">
+              Filter by stack
+            </p>
+            <button
+              type="button"
+              onClick={clearFilters}
+              disabled={!hasFilters}
+              className="trace-link font-mono text-[11px] uppercase tracking-[0.12em] text-accent disabled:pointer-events-none disabled:text-muted/60"
+            >
+              Clear filters
+              <X className="h-3.5 w-3.5" aria-hidden="true" />
+            </button>
+          </div>
+          <div
+            className="flex min-w-0 flex-wrap gap-2"
+            aria-label="Technology filters"
+          >
+            {tags.map((tag) => {
+              const active = activeTags.includes(tag);
+              return (
+                <button
+                  key={tag}
+                  type="button"
+                  onClick={() => toggleTag(tag)}
+                  className={cn(
+                    "relative min-h-11 max-w-full overflow-hidden rounded-button border px-3 font-mono text-[10px] uppercase tracking-[0.12em] transition",
+                    active
+                      ? "border-accent bg-accent text-background shadow-[0_0_24px_rgba(125,211,252,0.22)]"
+                      : "border-white/15 bg-white/[0.025] text-secondary hover:border-accent/35 hover:text-white",
+                  )}
+                  aria-pressed={active}
+                >
+                  {active ? (
+                    <motion.span
+                      layoutId={`filter-${tag}`}
+                      className="absolute inset-x-0 bottom-0 h-px bg-white/70"
+                      aria-hidden="true"
+                    />
+                  ) : null}
+                  <span className="relative z-10">{tag}</span>
+                </button>
+              );
+            })}
+          </div>
         </div>
 
-        <label className="focus-trace relative min-w-0 rounded-card">
-          <span className="sr-only">Sort projects</span>
-          <SlidersHorizontal
-            className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-accent"
-            aria-hidden="true"
-          />
-          <select
-            value={sort}
-            onChange={(event) =>
-              setSort(event.target.value as "newest" | "impact")
-            }
-            className="h-12 w-full min-w-[180px] rounded-card bg-transparent pl-11 pr-4 font-mono text-[11px] uppercase tracking-[0.12em] text-secondary outline-none"
-          >
-            <option value="newest">newest</option>
-            <option value="impact">most impactful</option>
-          </select>
+        <label className="relative min-w-0 rounded-card">
+          <span className="mb-2 block font-mono text-[11px] uppercase tracking-[0.14em] text-muted">
+            Sort projects
+          </span>
+          <span className="focus-trace relative block rounded-card">
+            <SlidersHorizontal
+              className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-accent"
+              aria-hidden="true"
+            />
+            <select
+              value={sort}
+              onChange={(event) =>
+                setSort(event.target.value as "newest" | "impact")
+              }
+              className="h-12 w-full min-w-[180px] rounded-card bg-transparent pl-11 pr-4 font-mono text-[11px] uppercase tracking-[0.12em] text-secondary outline-none"
+            >
+              <option value="newest">newest</option>
+              <option value="impact">most impactful</option>
+            </select>
+          </span>
         </label>
       </div>
+
+      <p className="mb-5 font-mono text-[11px] uppercase tracking-[0.14em] text-muted">
+        Showing {visibleProjects.length} of {projects.length} projects
+      </p>
 
       <AnimatePresence mode="popLayout">
         {visibleProjects.length > 0 ? (

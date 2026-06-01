@@ -7,7 +7,6 @@ import { WordReveal } from "@/components/about/WordReveal";
 import { MotionReveal } from "@/components/ui/Motion";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { profile } from "@/lib/data";
-import { blurDataUrl } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "About",
@@ -29,9 +28,10 @@ export default function AboutPage() {
                     alt="Portrait of Ashmeet Singh"
                     width={490}
                     height={540}
-                    placeholder="blur"
-                    blurDataURL={blurDataUrl}
-                    className="h-full w-full object-cover object-top contrast-110"
+                    quality={100}
+                    unoptimized
+                    sizes="360px"
+                    className="h-full w-full object-cover object-top"
                   />
                   <div
                     className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/35 to-transparent"

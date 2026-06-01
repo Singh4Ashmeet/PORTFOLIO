@@ -81,7 +81,7 @@ export function Navbar() {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "relative rounded-button px-4 py-2 text-[13px] lowercase text-secondary transition hover:text-white",
+                  "relative rounded-button px-4 py-2 text-[13px] text-secondary transition hover:text-white",
                   active && "text-white",
                 )}
               >
@@ -160,7 +160,7 @@ export function Navbar() {
                   <Link
                     key={item.href}
                     href={item.href}
-                    className="rounded-card border border-white/[0.06] px-4 py-4 text-lg lowercase text-secondary transition hover:border-accent/30 hover:text-white"
+                    className="rounded-card border border-white/[0.06] px-4 py-4 text-lg text-secondary transition hover:border-accent/30 hover:text-white"
                     onClick={() => setOpen(false)}
                   >
                     {item.label}

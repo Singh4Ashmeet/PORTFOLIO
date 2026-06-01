@@ -27,7 +27,7 @@ export function Footer() {
             </p>
           </div>
           <nav
-            className="grid gap-3 text-sm lowercase text-secondary"
+            className="grid gap-3 text-sm text-secondary"
             aria-label="Footer navigation"
           >
             {profile.nav.map((item) => (

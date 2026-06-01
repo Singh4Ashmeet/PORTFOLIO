@@ -70,6 +70,10 @@ export type Project = {
   metric: string;
   role: string;
   timeline: string;
+  image: {
+    src: string;
+    alt: string;
+  };
   outcomes: string[];
   featured: boolean;
   githubUrl: string;

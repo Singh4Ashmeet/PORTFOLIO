@@ -26,9 +26,10 @@ export function generateMetadata({ params }: ProjectPageProps): Metadata {
     title: project.title,
     description: project.description,
     openGraph: {
-      title: `${project.title} — Ashmeet Singh`,
+      title: `${project.title} - Ashmeet Singh`,
       description: project.description,
       type: "article",
+      images: [{ url: project.image.src }],
     },
   };
 }

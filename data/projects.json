@@ -9,6 +9,10 @@
     "metric": "40% failure impact reduced",
     "role": "Solo Developer",
     "timeline": "2024",
+    "image": {
+      "src": "/images/projects/guardaxis-hero.webp",
+      "alt": "GuardAxis security dashboard showing threat scoring, attack stages, and detector status"
+    },
     "outcomes": [
       "4-source threat-scoring engine with 14+ detectors spanning recon to exfiltration",
       "Multi-layer fallback logic cut cascading failure impact by 40%",
@@ -28,6 +32,10 @@
     "metric": "80% manual effort saved",
     "role": "Solo Developer",
     "timeline": "2024",
+    "image": {
+      "src": "/images/projects/credgen-ai-hero.webp",
+      "alt": "CREDGEN AI underwriting workspace with credit scoring, anomaly review, and loan assistant panels"
+    },
     "outcomes": [
       "5-agent orchestration: XGBoost credit scoring + PyOD anomaly detection",
       "Slashed manual underwriting effort by 80%, processing time by 70%",
@@ -47,6 +55,10 @@
     "metric": "WebSocket live dispatch",
     "role": "Solo Developer",
     "timeline": "2026",
+    "image": {
+      "src": "/images/projects/raid-nexus-hero.webp",
+      "alt": "RAID Nexus ambulance dispatch command center with incidents, units, routes, and live status"
+    },
     "outcomes": [
       "React command center backed by FastAPI APIs and WebSocket live updates",
       "Deterministic AI fallbacks keep dispatch explainability available without optional ML/LLM services",
@@ -66,6 +78,10 @@
     "metric": "0.995 R2 model score",
     "role": "Solo Developer",
     "timeline": "2026",
+    "image": {
+      "src": "/images/projects/solarai-hero.webp",
+      "alt": "SolarAI planning dashboard with solar efficiency prediction, sun path, ROI, and report outputs"
+    },
     "outcomes": [
       "Gradient Boosting model uses 33 engineered features for solar efficiency prediction",
       "Three.js sun-path visualisation, ROI analysis, and PDF reports support planning decisions",

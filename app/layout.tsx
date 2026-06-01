@@ -27,9 +27,12 @@ const spaceMono = Space_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://ashmeetsingh.dev"),
-  title: "Ashmeet Singh — Backend & AI Engineer",
+  title: {
+    default: "Ashmeet Singh - Backend & AI Engineer",
+    template: "%s | Ashmeet Singh",
+  },
   description:
-    "CS undergraduate at GTBIT Delhi. Building production-grade AI systems with FastAPI, React and LLMs. Open to backend/AI roles.",
+    "Backend and AI engineer building production-grade APIs, LLM workflows, and full-stack systems with measurable impact.",
   keywords: [
     "Ashmeet Singh",
     "backend developer",
@@ -41,9 +44,9 @@ export const metadata: Metadata = {
     "Delhi",
   ],
   openGraph: {
-    title: "Ashmeet Singh — Backend & AI Engineer",
+    title: "Ashmeet Singh - Backend & AI Engineer",
     description:
-      "GuardAxis · CREDGEN AI · RAID Nexus — production-grade AI systems",
+      "GuardAxis, CREDGEN AI, and RAID Nexus - production-grade AI systems",
     url: "https://ashmeetsingh.dev",
     siteName: "Ashmeet Singh",
     images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
@@ -52,8 +55,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ashmeet Singh — Backend & AI Engineer",
-    description: "5+ production AI projects · FastAPI · React · LLMs",
+    title: "Ashmeet Singh - Backend & AI Engineer",
+    description: "5+ production AI projects | FastAPI | React | LLMs",
     images: ["/og-image.jpg"],
   },
 };
@@ -72,7 +75,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     name: profile.name,
     jobTitle: profile.role,
     email: profile.email,
-    telephone: profile.phone,
     address: {
       "@type": "PostalAddress",
       addressLocality: profile.location,
@@ -114,6 +116,12 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           ) : null}
           <ScrollProgress />
           <GrainOverlay />
+          <a
+            href="#main"
+            className="fixed left-4 top-4 z-[100] -translate-y-20 rounded-button border border-accent bg-background px-4 py-3 font-mono text-xs uppercase tracking-[0.14em] text-accent transition focus:translate-y-0"
+          >
+            Skip to content
+          </a>
           <Navbar />
           <main id="main" tabIndex={-1}>
             {children}

@@ -194,14 +194,6 @@ function parseContactResponse(responseText: string): ContactResponse {
   }
 }
 
-function floatingLabelClass(hasValue: boolean) {
-  return cn(
-    "pointer-events-none absolute left-4 top-4 font-mono text-[11px] uppercase tracking-[0.14em] text-muted transition duration-300",
-    hasValue && "top-2 text-[9px] text-accent",
-    "peer-focus:top-2 peer-focus:text-[9px] peer-focus:text-accent",
-  );
-}
-
 function FloatingInput({
   id,
   label,
@@ -218,19 +210,22 @@ function FloatingInput({
   autoComplete: string;
 }) {
   return (
-    <label htmlFor={id} className="focus-trace relative block rounded-card">
-      <input
-        id={id}
-        required
-        name={id}
-        value={value}
-        onChange={(event) => onChange(event.target.value)}
-        className="peer h-14 w-full rounded-card bg-transparent px-4 pb-2 pt-6 text-sm text-white outline-none"
-        type={type}
-        autoComplete={autoComplete}
-        placeholder=" "
-      />
-      <span className={floatingLabelClass(value.length > 0)}>{label}</span>
+    <label htmlFor={id} className="block">
+      <span className="mb-2 block font-mono text-[11px] uppercase tracking-[0.14em] text-secondary">
+        {label}
+      </span>
+      <span className="focus-trace relative block rounded-card">
+        <input
+          id={id}
+          required
+          name={id}
+          value={value}
+          onChange={(event) => onChange(event.target.value)}
+          className="h-12 w-full rounded-card bg-transparent px-4 text-sm text-white outline-none"
+          type={type}
+          autoComplete={autoComplete}
+        />
+      </span>
     </label>
   );
 }
@@ -247,18 +242,21 @@ function FloatingTextarea({
   onChange: (value: string) => void;
 }) {
   return (
-    <label htmlFor={id} className="focus-trace relative block rounded-card">
-      <textarea
-        id={id}
-        required
-        minLength={20}
-        name={id}
-        value={value}
-        onChange={(event) => onChange(event.target.value)}
-        className="peer min-h-44 w-full resize-y rounded-card bg-transparent px-4 pb-3 pt-8 text-sm leading-[1.8] text-white outline-none"
-        placeholder=" "
-      />
-      <span className={floatingLabelClass(value.length > 0)}>{label}</span>
+    <label htmlFor={id} className="block">
+      <span className="mb-2 block font-mono text-[11px] uppercase tracking-[0.14em] text-secondary">
+        {label}
+      </span>
+      <span className="focus-trace relative block rounded-card">
+        <textarea
+          id={id}
+          required
+          minLength={20}
+          name={id}
+          value={value}
+          onChange={(event) => onChange(event.target.value)}
+          className="min-h-44 w-full resize-y rounded-card bg-transparent px-4 py-3 text-sm leading-[1.8] text-white outline-none"
+        />
+      </span>
     </label>
   );
 }

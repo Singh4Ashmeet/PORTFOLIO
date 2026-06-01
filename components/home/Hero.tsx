@@ -6,7 +6,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { MagneticWrapper } from "@/components/ui/MagneticWrapper";
 import { profile } from "@/lib/data";
-import { blurDataUrl } from "@/lib/utils";
 
 const codeLines = [
   "const engineer = {",
@@ -113,12 +112,13 @@ export function Hero() {
                 width={490}
                 height={540}
                 priority
-                placeholder="blur"
-                blurDataURL={blurDataUrl}
-                className="h-full w-full object-cover object-top contrast-110"
+                quality={100}
+                unoptimized
+                sizes="(min-width: 1024px) 380px, 80vw"
+                className="h-full w-full object-cover object-top"
               />
               <div
-                className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/45 via-transparent to-transparent"
+                className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/18 via-transparent to-transparent"
                 aria-hidden="true"
               />
             </div>
@@ -192,10 +192,7 @@ export function Hero() {
                 href="/projects"
                 className="inline-flex min-h-12 items-center justify-center gap-4 rounded-button border border-accent/50 bg-accent/10 px-6 font-mono text-[12px] uppercase tracking-[0.16em] text-accent transition hover:bg-accent hover:text-background active:scale-[0.97]"
               >
-                {profile.hero.projectCta
-                  .replace("â†’", "")
-                  .replace("→", "")
-                  .trim()}
+                {profile.hero.projectCta}
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Link>
             </MagneticWrapper>
