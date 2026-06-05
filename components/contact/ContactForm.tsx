@@ -142,6 +142,7 @@ export function ContactForm() {
 
       <button
         type="submit"
+        aria-busy={loading}
         className={cn(
           "relative mt-6 inline-flex min-h-12 w-full items-center justify-center gap-3 overflow-hidden rounded-button border px-5 font-mono text-[11px] uppercase tracking-[0.16em] transition active:scale-[0.97] disabled:pointer-events-none disabled:opacity-60",
           isSuccess
@@ -173,7 +174,8 @@ export function ContactForm() {
               ? "border-success/40 bg-success/10 text-success"
               : "border-red-500/40 bg-red-500/10 text-red-300",
           )}
-          role="status"
+          role={toast.type === "error" ? "alert" : "status"}
+          aria-live={toast.type === "error" ? "assertive" : "polite"}
         >
           {toast.message}
         </p>
