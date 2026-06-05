@@ -1,3 +1,4 @@
 ## 2024-06-05 - Focus Ring Offset Update
+
 **Learning:** The default global focus outline is a generic 2px outline. This outline overlaps awkwardly with button styling such as rings/shadows and rounded cards. Adding explicit ring styling achieves a much more polished and accessible focus state for keyboard navigation.
 **Action:** Append `focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background` to base classes in `components/ui/Button.tsx`.
