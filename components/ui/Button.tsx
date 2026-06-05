@@ -17,7 +17,7 @@ type ButtonLinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
 };
 
 const base =
-  "inline-flex min-h-11 items-center justify-center gap-2 rounded-button px-5 py-3 font-mono text-[11px] uppercase tracking-[0.16em] transition duration-300 ease-out active:scale-[0.97] disabled:pointer-events-none disabled:opacity-50";
+  "inline-flex min-h-11 items-center justify-center gap-2 rounded-button px-5 py-3 font-mono text-[11px] uppercase tracking-[0.16em] transition duration-300 ease-out active:scale-[0.97] disabled:pointer-events-none disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background";
 
 const variants = {
   solid:
