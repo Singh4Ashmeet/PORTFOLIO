@@ -18,6 +18,7 @@ type SendGridError = Error & {
 const rateLimit = new Map<string, RateEntry>();
 const WINDOW_MS = 60 * 60 * 1000;
 const MAX_SUBMISSIONS = 3;
+const MAX_TRACKED_IPS = 5000;
 
 function getClientIp(request: NextRequest) {
   const forwarded = request.headers.get("x-forwarded-for");
@@ -28,8 +29,30 @@ function getClientIp(request: NextRequest) {
   );
 }
 
+function evictExpiredEntries(now: number) {
+  for (const [ip, entry] of rateLimit) {
+    if (entry.resetAt <= now) {
+      rateLimit.delete(ip);
+    }
+  }
+}
+
 function checkRateLimit(ip: string) {
   const now = Date.now();
+
+  // Evict stale entries so the map cannot grow without bound.
+  if (rateLimit.size >= MAX_TRACKED_IPS) {
+    evictExpiredEntries(now);
+
+    if (rateLimit.size >= MAX_TRACKED_IPS) {
+      const oldestIp = rateLimit.keys().next().value;
+
+      if (oldestIp !== undefined) {
+        rateLimit.delete(oldestIp);
+      }
+    }
+  }
+
   const current = rateLimit.get(ip);
 
   if (!current || current.resetAt <= now) {

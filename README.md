@@ -22,7 +22,7 @@ Production Next.js 14 portfolio for Ashmeet Singh, built around a dark editorial
 - `/projects/[slug]`
 - `/resume`
 - `/contact`
-- `/blog`
+- `/certifications`
 
 ## Local Development
 

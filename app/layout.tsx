@@ -49,7 +49,6 @@ export const metadata: Metadata = {
       "GuardAxis, CREDGEN AI, and RAID Nexus - production-grade AI systems",
     url: "https://portfolio-q952.onrender.com",
     siteName: "Ashmeet Singh",
-    images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
     locale: "en_IN",
     type: "website",
   },
@@ -57,7 +56,6 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Ashmeet Singh - Backend & AI Engineer",
     description: "5+ production AI projects | FastAPI | React | LLMs",
-    images: ["/og-image.jpg"],
   },
 };
 
