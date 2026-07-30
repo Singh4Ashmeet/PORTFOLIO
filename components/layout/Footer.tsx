@@ -10,7 +10,7 @@ export function Footer() {
     <footer className="relative overflow-hidden border-t border-white/[0.06] bg-background">
       <motion.div
         aria-hidden="true"
-        className="absolute left-1/2 top-0 h-px w-full max-w-4xl -translate-x-1/2 bg-accent shadow-[0_0_30px_rgba(125,211,252,0.7)]"
+        className="absolute left-1/2 top-0 h-px w-full max-w-4xl -translate-x-1/2 bg-accent shadow-[0_0_30px_rgba(74,222,128,0.7)]"
         initial={{ scaleX: 0 }}
         whileInView={{ scaleX: 1 }}
         viewport={{ once: true, amount: 0.35 }}
@@ -22,7 +22,7 @@ export function Footer() {
             <p className="font-mono text-sm uppercase tracking-[0.16em] text-white">
               {profile.name}
             </p>
-            <p className="mt-4 max-w-md bg-[linear-gradient(90deg,#fff,rgba(125,211,252,0.9),#fff)] bg-[length:220%_100%] bg-clip-text text-base leading-[1.8] text-transparent [animation:shimmer-sweep_5s_linear_infinite]">
+            <p className="mt-4 max-w-md bg-[linear-gradient(90deg,#fff,rgba(74,222,128,0.9),#fff)] bg-[length:220%_100%] bg-clip-text text-base leading-[1.8] text-transparent [animation:shimmer-sweep_5s_linear_infinite]">
               {profile.footer.tagline}
             </p>
           </div>
@@ -63,8 +63,9 @@ export function Footer() {
             ))}
           </div>
         </div>
-        <div className="mt-12 border-t border-white/[0.06] pt-6 font-mono text-[11px] tracking-[0.14em] text-muted">
-          {profile.footer.copyright}
+        <div className="mt-12 flex flex-wrap items-center justify-between gap-3 border-t border-white/[0.06] pt-6 font-mono text-[11px] tracking-[0.14em] text-muted">
+          <span>{profile.footer.copyright}</span>
+          <span className="italic">$ uptime 99.98% — latency 12ms</span>
         </div>
       </div>
     </footer>

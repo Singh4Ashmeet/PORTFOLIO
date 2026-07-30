@@ -12,6 +12,7 @@ const config: Config = {
         background: "var(--color-background)",
         surface: "var(--color-surface)",
         card: "var(--color-card)",
+        panel: "var(--color-panel)",
         primary: "var(--color-text-primary)",
         secondary: "var(--color-text-secondary)",
         muted: "var(--color-text-muted)",
@@ -19,24 +20,15 @@ const config: Config = {
         success: "var(--color-success)",
         border: "var(--color-border)",
         "border-hover": "var(--color-border-hover)",
+        white: "#e4f0e6",
       },
       borderRadius: {
         button: "2px",
         card: "4px",
       },
       fontFamily: {
-        sans: [
-          "var(--font-space-grotesk)",
-          "ui-sans-serif",
-          "system-ui",
-          "sans-serif",
-        ],
-        mono: [
-          "var(--font-space-mono)",
-          "ui-monospace",
-          "SFMono-Regular",
-          "monospace",
-        ],
+        sans: ["var(--font-jetbrains)", "ui-monospace", "monospace"],
+        mono: ["var(--font-jetbrains)", "ui-monospace", "monospace"],
       },
       transitionTimingFunction: {
         editorial: "cubic-bezier(0.22, 1, 0.36, 1)",

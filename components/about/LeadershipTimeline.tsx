@@ -18,7 +18,7 @@ export function LeadershipTimeline() {
         <div className="relative pl-8">
           <div className="absolute left-0 top-1 h-full w-px bg-white/[0.08]" />
           <motion.div
-            className="absolute left-0 top-1 w-px origin-top bg-accent shadow-[0_0_20px_rgba(125,211,252,0.8)]"
+            className="absolute left-0 top-1 w-px origin-top bg-accent shadow-[0_0_20px_rgba(74,222,128,0.8)]"
             initial={{ scaleY: 0 }}
             whileInView={{ scaleY: 1 }}
             viewport={{ once: true, amount: 0.25 }}
@@ -35,7 +35,7 @@ export function LeadershipTimeline() {
               transition={{ delay: index * 0.08, duration: 0.58 }}
             >
               <span
-                className="absolute -left-[37px] top-7 h-3 w-3 rounded-full border border-accent bg-background shadow-[0_0_18px_rgba(125,211,252,0.8)] first:top-1"
+                className="absolute -left-[37px] top-7 h-3 w-3 rounded-full border border-accent bg-background shadow-[0_0_18px_rgba(74,222,128,0.8)] first:top-1"
                 aria-hidden="true"
               />
               <div className="flex flex-col gap-2 md:flex-row md:items-start md:justify-between">

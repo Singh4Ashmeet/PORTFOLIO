@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
-import { Space_Grotesk, Space_Mono } from "next/font/google";
+import { JetBrains_Mono } from "next/font/google";
 import Script from "next/script";
 import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
@@ -11,18 +11,12 @@ import { profile } from "@/lib/data";
 import "@/app/globals.css";
 import "lenis/dist/lenis.css";
 
-const spaceGrotesk = Space_Grotesk({
+const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-space-grotesk",
-  weight: ["400", "700"],
-});
-
-const spaceMono = Space_Mono({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-space-mono",
-  weight: ["400", "700"],
+  variable: "--font-jetbrains",
+  weight: ["400", "500", "700", "800"],
+  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
@@ -94,10 +88,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   };
 
   return (
-    <html
-      lang="en"
-      className={`${spaceGrotesk.variable} ${spaceMono.variable}`}
-    >
+    <html lang="en" className={jetbrainsMono.variable}>
       <body>
         <SiteProviders>
           <Script id="person-schema" type="application/ld+json">

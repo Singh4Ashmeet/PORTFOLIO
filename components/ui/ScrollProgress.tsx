@@ -16,7 +16,7 @@ export function ScrollProgress() {
       className="pointer-events-none fixed left-0 right-0 top-0 z-[90] h-px bg-white/[0.06]"
     >
       <motion.div
-        className="h-full origin-left bg-accent shadow-[0_0_18px_rgba(125,211,252,0.9)]"
+        className="h-full origin-left bg-accent shadow-[0_0_18px_rgba(74,222,128,0.9)]"
         style={{ scaleX }}
       />
     </div>

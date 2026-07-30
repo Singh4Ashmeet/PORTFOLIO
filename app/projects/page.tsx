@@ -14,9 +14,9 @@ export default function ProjectsPage() {
     <div className="container-page pb-24 pt-28 md:pb-28 md:pt-32">
       <div className="mb-9 grid gap-6 lg:grid-cols-[1fr_0.75fr] lg:items-end">
         <div>
-          <SectionLabel>Projects</SectionLabel>
-          <h1 className="mt-5 text-5xl font-bold leading-none text-white md:text-7xl">
-            Case studies
+          <SectionLabel>{">"} selected systems</SectionLabel>
+          <h1 className="mt-5 font-mono text-4xl font-bold uppercase leading-none tracking-tight text-white md:text-6xl">
+            Index of works
           </h1>
         </div>
         <p className="max-w-xl text-sm leading-[1.8] text-secondary lg:justify-self-end">

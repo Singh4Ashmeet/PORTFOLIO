@@ -1,196 +1,87 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowDown, ArrowRight } from "lucide-react";
-import Image from "next/image";
+import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { MagneticWrapper } from "@/components/ui/MagneticWrapper";
 import { profile } from "@/lib/data";
 
-const codeLines = [
-  "const engineer = {",
-  `  role: "${profile.role}",`,
-  '  focus: ["systems", "apis", "ai"],',
-  '  building: "impactful products"',
-  "};",
-];
-
-function AnimatedWord({ word, delay = 0 }: { word: string; delay?: number }) {
+function RevealLine({
+  children,
+  delay = 0,
+}: {
+  children: React.ReactNode;
+  delay?: number;
+}) {
   return (
-    <span className="block overflow-hidden whitespace-nowrap pb-[0.16em] leading-[1.08]">
-      {word.split("").map((char, index) => (
-        <motion.span
-          key={`${word}-${char}-${index}`}
-          className="inline-block"
-          initial={{ y: "0.9em", opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{
-            duration: 0.72,
-            ease: [0.22, 1, 0.36, 1],
-            delay: delay + index * 0.03,
-          }}
-        >
-          {char}
-        </motion.span>
-      ))}
+    <span className="block overflow-hidden pb-[0.08em]">
+      <motion.span
+        className="block"
+        initial={{ y: "1.05em" }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1], delay }}
+      >
+        {children}
+      </motion.span>
     </span>
   );
 }
 
 export function Hero() {
-  const { scrollY } = useScroll();
-  const portraitY = useTransform(scrollY, [0, 800], [0, 120]);
-  const gridY = useTransform(scrollY, [0, 800], [0, -80]);
-
-  const tag = "<AI builder>";
-
   return (
-    <section className="relative min-h-screen overflow-hidden pt-24">
-      <motion.div
-        aria-hidden="true"
-        className="tech-grid-bg absolute inset-0 opacity-70"
-        style={{ y: gridY }}
-      />
+    <section className="relative overflow-hidden pt-32 md:pt-40">
       <div
         aria-hidden="true"
-        className="absolute left-1/2 top-24 h-[36rem] w-[36rem] -translate-x-1/2 rounded-full bg-accent/[0.045] blur-3xl"
-      />
-      <div
-        aria-hidden="true"
-        className="absolute bottom-48 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent/45 to-transparent"
+        className="tech-grid-bg absolute inset-0 opacity-60"
       />
 
-      <div className="container-page relative z-10 grid min-h-[calc(100svh-6rem)] grid-cols-1 items-center gap-10 pb-36 pt-6 lg:grid-cols-[minmax(0,0.95fr)_minmax(300px,380px)] lg:gap-8 lg:pt-8 xl:grid-cols-[minmax(0,0.78fr)_minmax(300px,380px)_minmax(320px,0.62fr)] xl:gap-5 2xl:gap-8 min-[1700px]:grid-cols-[minmax(540px,0.86fr)_minmax(320px,390px)_minmax(330px,0.56fr)]">
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          className="order-1 lg:order-1"
+      <div className="container-page relative z-10">
+        <motion.p
+          className="font-mono text-[11px] uppercase tracking-[0.16em] text-accent"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.1, duration: 0.6 }}
         >
-          <div className="mb-8 flex items-center gap-4 font-mono text-[11px] uppercase tracking-[0.16em] text-accent">
-            <span>01</span>
-            <span className="h-px w-12 bg-accent/70" aria-hidden="true" />
-          </div>
-          <h1 className="display-heading max-w-none text-balance text-[3.75rem] sm:text-[4.6rem] md:text-[5.5rem] xl:text-[5.25rem] 2xl:text-[5.9rem]">
-            {profile.hero.primaryWords.map((word, index) => (
-              <AnimatedWord key={word} word={word} delay={0.15 + index * 0.1} />
-            ))}
-          </h1>
+          {profile.name} — {profile.hero.leftLabel} — {profile.location}
+          <motion.span
+            aria-hidden="true"
+            className="ml-2 inline-block h-3.5 w-[7px] translate-y-[2px] bg-accent"
+            animate={{ opacity: [1, 0.15, 1] }}
+            transition={{ duration: 1.1, repeat: Infinity, ease: "linear" }}
+          />
+        </motion.p>
+
+        <h1 className="display-heading mt-8 max-w-5xl">
+          <RevealLine delay={0.18}>Backend &amp; AI</RevealLine>
+          <RevealLine delay={0.3}>
+            <span className="text-accent">Engineer</span>
+          </RevealLine>
+        </h1>
+
+        <div className="mt-10 grid gap-10 lg:grid-cols-[minmax(0,30rem)_auto] lg:items-end lg:justify-between">
           <motion.p
-            className="mt-7 max-w-sm whitespace-pre-line font-mono text-sm leading-[1.8] text-secondary"
-            initial={{ opacity: 0, y: 18 }}
+            className="max-w-md text-sm leading-[1.85] text-secondary md:text-base"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          >
+            {profile.hero.bio}
+          </motion.p>
+
+          <motion.div
+            className="flex flex-wrap gap-3"
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
-              delay: 0.52,
+              delay: 0.62,
               duration: 0.7,
               ease: [0.22, 1, 0.36, 1],
             }}
           >
-            {profile.hero.bio}
-          </motion.p>
-        </motion.div>
-
-        <motion.div
-          className="order-2 mx-auto w-full max-w-[300px] sm:max-w-[360px] lg:order-2 lg:max-w-[380px] min-[1700px]:max-w-[420px]"
-          style={{ y: portraitY }}
-          initial={{ opacity: 0, scale: 0.92 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.2, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-        >
-          <div className="relative mx-auto aspect-[4/5] max-h-[min(540px,calc(100svh-14rem))] min-h-[360px] overflow-visible max-sm:min-h-0">
-            <div
-              className="absolute inset-4 translate-x-8 translate-y-8 rounded-card border border-accent/20"
-              aria-hidden="true"
-            />
-            <div
-              className="absolute inset-2 translate-x-4 translate-y-4 rounded-card border border-white/10"
-              aria-hidden="true"
-            />
-            <div className="relative h-full overflow-hidden rounded-card border border-white/20 bg-card shadow-[0_0_90px_rgba(125,211,252,0.16)] [animation:float-depth_4s_ease-in-out_infinite]">
-              <Image
-                src="/ashmeet.jpg"
-                alt="Portrait of Ashmeet Singh"
-                width={490}
-                height={540}
-                priority
-                quality={100}
-                unoptimized
-                sizes="(min-width: 1024px) 380px, 80vw"
-                className="h-full w-full object-cover object-top"
-              />
-              <div
-                className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/18 via-transparent to-transparent"
-                aria-hidden="true"
-              />
-            </div>
-          </div>
-        </motion.div>
-
-        <motion.div
-          className="order-3 min-w-0 text-left lg:col-span-2 xl:col-span-1 xl:text-right"
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.25, duration: 0.72, ease: [0.22, 1, 0.36, 1] }}
-        >
-          <div className="mb-8 flex items-center gap-4 font-mono text-[11px] uppercase tracking-[0.16em] text-accent xl:justify-end">
-            <span className="h-px w-12 bg-accent/70" aria-hidden="true" />
-            <span>build</span>
-          </div>
-          <div className="whitespace-nowrap font-mono text-3xl leading-none text-white sm:text-4xl xl:text-[2rem] 2xl:text-[2.55rem] min-[1700px]:text-[2.85rem]">
-            {tag.split("").map((char, index) => (
-              <motion.span
-                key={`${char}-${index}`}
-                className={char === "<" || char === ">" ? "text-accent" : ""}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.25 + index * 0.035, duration: 0.4 }}
-              >
-                {char}
-              </motion.span>
-            ))}
-            <motion.span
-              className="ml-1 inline-block h-12 w-px translate-y-2 bg-accent"
-              animate={{ opacity: [1, 0.2, 1] }}
-              transition={{ duration: 1, repeat: Infinity }}
-            />
-          </div>
-          <div className="mt-8 overflow-x-auto rounded-card border border-white/[0.08] bg-background/55 p-5 text-left font-mono text-[11px] leading-7 text-secondary shadow-[0_0_50px_rgba(0,0,0,0.4)] backdrop-blur-sm sm:text-[12px]">
-            {codeLines.map((line, index) => (
-              <p key={line} className="min-w-max whitespace-pre">
-                <span className="mr-4 inline-block w-5 text-muted">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                {line}
-              </p>
-            ))}
-          </div>
-          <p className="mt-6 whitespace-pre-line text-sm leading-[1.8] text-muted xl:ml-auto xl:max-w-xs">
-            {profile.hero.rightTagline}
-          </p>
-        </motion.div>
-      </div>
-
-      <motion.div
-        className="absolute inset-x-4 bottom-5 z-20 rounded-card border border-white/[0.08] bg-background/70 backdrop-blur-xl"
-        initial={{ opacity: 0, y: 26 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.4, duration: 0.72, ease: [0.22, 1, 0.36, 1] }}
-      >
-        <div className="mx-auto flex max-w-[1400px] flex-col gap-4 px-5 py-4 md:flex-row md:items-center md:justify-between">
-          <div className="flex min-w-0 flex-1 items-center gap-5 font-mono text-[12px] text-secondary">
-            <span className="shrink-0">{profile.hero.scrollLabel}</span>
-            <span className="relative h-px flex-1 overflow-hidden bg-white/15">
-              <motion.span
-                className="absolute inset-y-0 left-0 w-28 bg-accent shadow-[0_0_18px_rgba(125,211,252,0.8)]"
-                animate={{ x: ["-100%", "640%"] }}
-                transition={{ duration: 3.4, repeat: Infinity, ease: "linear" }}
-              />
-            </span>
-          </div>
-          <div className="flex flex-wrap gap-3">
             <MagneticWrapper>
               <Link
                 href="/projects"
-                className="inline-flex min-h-12 items-center justify-center gap-4 rounded-button border border-accent/50 bg-accent/10 px-6 font-mono text-[12px] uppercase tracking-[0.16em] text-accent transition hover:bg-accent hover:text-background active:scale-[0.97]"
+                className="inline-flex min-h-12 items-center justify-center gap-3 rounded-button border border-accent bg-accent px-6 font-mono text-[12px] font-bold uppercase tracking-[0.16em] text-background transition hover:bg-transparent hover:text-accent active:scale-[0.97]"
               >
                 {profile.hero.projectCta}
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -199,22 +90,17 @@ export function Hero() {
             <MagneticWrapper>
               <Link
                 href="/resume"
-                className="inline-flex min-h-12 items-center justify-center gap-4 rounded-button border border-white/15 bg-white/[0.025] px-6 font-mono text-[12px] uppercase tracking-[0.16em] text-white transition hover:border-accent/50 active:scale-[0.97]"
+                className="inline-flex min-h-12 items-center justify-center gap-3 rounded-button border border-white/20 px-6 font-mono text-[12px] uppercase tracking-[0.16em] text-white transition hover:border-accent hover:text-accent active:scale-[0.97]"
               >
                 {profile.hero.cvCta}
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Link>
             </MagneticWrapper>
-            <a
-              href="#featured-projects"
-              className="grid h-12 w-12 place-items-center rounded-button border border-accent/35 text-accent transition hover:bg-accent/10"
-              aria-label="Jump to featured projects"
-            >
-              <ArrowDown className="h-5 w-5" aria-hidden="true" />
-            </a>
-          </div>
+          </motion.div>
         </div>
-      </motion.div>
+      </div>
+
+      <div className="mt-16 md:mt-24" />
     </section>
   );
 }

@@ -87,15 +87,7 @@ export function ContactForm() {
   }
 
   return (
-    <form
-      onSubmit={onSubmit}
-      noValidate
-      className="relative overflow-hidden rounded-card border border-white/[0.08] bg-surface/70 p-6 md:p-8"
-    >
-      <div
-        className="absolute right-0 top-0 h-48 w-48 bg-accent/[0.05] blur-3xl"
-        aria-hidden="true"
-      />
+    <form onSubmit={onSubmit} noValidate className="relative">
       <input
         type="text"
         name="website"
@@ -144,10 +136,10 @@ export function ContactForm() {
         type="submit"
         aria-busy={loading}
         className={cn(
-          "relative mt-6 inline-flex min-h-12 w-full items-center justify-center gap-3 overflow-hidden rounded-button border px-5 font-mono text-[11px] uppercase tracking-[0.16em] transition active:scale-[0.97] disabled:pointer-events-none disabled:opacity-60",
+          "mt-10 inline-flex min-h-12 items-center justify-center gap-3 rounded-button border px-6 font-mono text-[12px] font-bold uppercase tracking-[0.16em] transition active:scale-[0.97] disabled:pointer-events-none disabled:opacity-60",
           isSuccess
-            ? "border-success/45 bg-success/10 text-success"
-            : "border-accent/45 bg-accent/10 text-accent hover:bg-accent hover:text-background",
+            ? "border-accent/45 bg-accent/10 text-accent"
+            : "border-accent bg-accent text-background hover:bg-transparent hover:text-accent",
         )}
         disabled={loading}
       >
@@ -213,17 +205,20 @@ function FloatingInput({
 }) {
   return (
     <label htmlFor={id} className="block">
-      <span className="mb-2 block font-mono text-[11px] uppercase tracking-[0.14em] text-secondary">
+      <span className="mb-1.5 block font-mono text-[11px] uppercase tracking-[0.14em] text-muted">
         {label}
       </span>
-      <span className="focus-trace relative block rounded-card">
+      <span className="flex items-center gap-2 border-b border-border pb-2 transition-colors focus-within:border-accent">
+        <span className="font-bold text-accent" aria-hidden="true">
+          {">"}
+        </span>
         <input
           id={id}
           required
           name={id}
           value={value}
           onChange={(event) => onChange(event.target.value)}
-          className="h-12 w-full rounded-card bg-transparent px-4 text-sm text-white outline-none"
+          className="w-full bg-transparent font-mono text-sm text-white caret-accent outline-none placeholder:text-muted/60"
           type={type}
           autoComplete={autoComplete}
         />
@@ -245,10 +240,13 @@ function FloatingTextarea({
 }) {
   return (
     <label htmlFor={id} className="block">
-      <span className="mb-2 block font-mono text-[11px] uppercase tracking-[0.14em] text-secondary">
+      <span className="mb-1.5 block font-mono text-[11px] uppercase tracking-[0.14em] text-muted">
         {label}
       </span>
-      <span className="focus-trace relative block rounded-card">
+      <span className="flex items-start gap-2 border-b border-border pb-2 transition-colors focus-within:border-accent">
+        <span className="pt-1 font-bold text-accent" aria-hidden="true">
+          {">"}
+        </span>
         <textarea
           id={id}
           required
@@ -256,7 +254,7 @@ function FloatingTextarea({
           name={id}
           value={value}
           onChange={(event) => onChange(event.target.value)}
-          className="min-h-44 w-full resize-y rounded-card bg-transparent px-4 py-3 text-sm leading-[1.8] text-white outline-none"
+          className="min-h-40 w-full resize-y bg-transparent font-mono text-sm leading-[1.8] text-white caret-accent outline-none placeholder:text-muted/60"
         />
       </span>
     </label>

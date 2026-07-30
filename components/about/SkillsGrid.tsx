@@ -1,41 +1,35 @@
 import { MotionReveal } from "@/components/ui/Motion";
 import { SectionLabel } from "@/components/ui/SectionLabel";
-import { TechTag } from "@/components/ui/TechTag";
 import { skills } from "@/lib/data";
 
-function rotationFor(index: number) {
-  return [-2, 1.5, -0.75, 2, -1.25, 0.75][index % 6];
-}
+const leaders = [".....", ".......", "....", ".........", ".....", "......"];
 
 export function SkillsGrid() {
   return (
     <section className="container-page section-y">
       <MotionReveal className="grid gap-10 lg:grid-cols-[260px_1fr]">
         <div>
-          <SectionLabel>Skills</SectionLabel>
-          <h2 className="mt-5 text-4xl font-bold leading-none text-white md:text-5xl">
-            Systems, APIs, and applied AI
+          <SectionLabel>{">"} skills ledger</SectionLabel>
+          <h2 className="mt-5 font-mono text-3xl font-bold uppercase leading-tight tracking-tight text-white md:text-4xl">
+            Systems, APIs, applied AI
           </h2>
         </div>
-        <div className="grid gap-8">
-          {Object.entries(skills).map(([category, items]) => (
-            <section
+        <div className="border-t border-border">
+          {Object.entries(skills).map(([category, items], index) => (
+            <div
               key={category}
-              className="grid gap-5 border-t border-white/[0.06] pt-6 md:grid-cols-[170px_1fr]"
+              className="grid gap-1 border-b border-border py-5 md:grid-cols-[150px_1fr] md:items-baseline md:gap-4"
             >
-              <SectionLabel className="text-white/45">{category}</SectionLabel>
-              <div className="flex flex-wrap gap-3">
-                {items.map((item, index) => (
-                  <TechTag
-                    key={item}
-                    style={{ transform: `rotate(${rotationFor(index)}deg)` }}
-                    className="origin-center px-3 py-1.5"
-                  >
-                    {item}
-                  </TechTag>
-                ))}
-              </div>
-            </section>
+              <p className="font-mono text-sm text-muted">
+                {category.toLowerCase()}
+                <span className="ml-3 text-muted/50">
+                  {leaders[index % leaders.length]}
+                </span>
+              </p>
+              <p className="font-mono text-sm leading-relaxed text-white md:text-base">
+                {items.join("  ·  ")}
+              </p>
+            </div>
           ))}
         </div>
       </MotionReveal>

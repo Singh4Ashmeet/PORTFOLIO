@@ -1,48 +1,43 @@
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
-import { ProjectCard } from "@/components/projects/ProjectCard";
+import { IndexRow } from "@/components/projects/IndexRow";
 import { MotionReveal } from "@/components/ui/Motion";
 import { SectionLabel } from "@/components/ui/SectionLabel";
-import { getFeaturedProjects, profile } from "@/lib/data";
+import { projects } from "@/lib/data";
 
 export function FeaturedProjects() {
-  const featuredProjects = getFeaturedProjects();
+  const indexProjects = projects.slice(0, 3);
 
   return (
-    <section
-      id="featured-projects"
-      className="section-y relative overflow-hidden"
-    >
-      <div
-        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/55 to-transparent"
-        aria-hidden="true"
-      />
+    <section id="featured-projects" className="section-y relative">
       <div className="container-page">
-        <MotionReveal className="mb-12 grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
-          <div className="max-w-3xl">
-            <SectionLabel>{profile.featured.label}</SectionLabel>
-            <h2 className="mt-5 text-4xl font-bold leading-none text-white md:text-6xl">
-              {profile.featured.title}
+        <MotionReveal className="mb-10 grid gap-6 md:grid-cols-[1fr_auto] md:items-end">
+          <div>
+            <SectionLabel>{">"} selected systems</SectionLabel>
+            <h2 className="mt-4 font-mono text-3xl font-bold uppercase leading-none tracking-tight text-white md:text-5xl">
+              Index of works
             </h2>
-            <p className="mt-5 max-w-2xl text-sm leading-[1.8] text-secondary md:text-base">
-              {profile.featured.description}
-            </p>
           </div>
           <Link
             href="/projects"
             className="trace-link w-fit font-mono text-[12px] uppercase tracking-[0.16em] text-accent"
           >
-            view all projects
+            full index
             <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </Link>
         </MotionReveal>
-        <div className="grid grid-cols-1 gap-5 lg:grid-cols-3">
-          {featuredProjects.map((project, index) => (
-            <MotionReveal key={project.slug} delay={index * 0.06}>
-              <ProjectCard project={project} />
+
+        <div className="border-b border-border">
+          {indexProjects.map((project, index) => (
+            <MotionReveal key={project.slug} delay={index * 0.08}>
+              <IndexRow project={project} index={index} />
             </MotionReveal>
           ))}
         </div>
+
+        <p className="mt-6 font-mono text-xs italic leading-relaxed text-muted">
+          $ {projects.length} systems deployed — all operational
+        </p>
       </div>
     </section>
   );

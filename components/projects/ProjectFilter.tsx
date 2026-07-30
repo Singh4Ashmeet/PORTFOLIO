@@ -3,7 +3,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { Search, SlidersHorizontal, X } from "lucide-react";
 import { useMemo, useState } from "react";
-import { ProjectCard } from "@/components/projects/ProjectCard";
+import { IndexRow } from "@/components/projects/IndexRow";
 import type { Project } from "@/lib/types";
 import { cn, extractMetricNumber } from "@/lib/utils";
 
@@ -117,21 +117,15 @@ export function ProjectFilter({
                   type="button"
                   onClick={() => toggleTag(tag)}
                   className={cn(
-                    "relative min-h-11 max-w-full overflow-hidden rounded-button border px-3 font-mono text-[10px] uppercase tracking-[0.12em] transition",
+                    "min-h-11 rounded-button border px-3 font-mono text-[11px] lowercase tracking-[0.08em] transition",
                     active
-                      ? "border-accent bg-accent text-background shadow-[0_0_24px_rgba(125,211,252,0.22)]"
-                      : "border-white/15 bg-white/[0.025] text-secondary hover:border-accent/35 hover:text-white",
+                      ? "border-accent/60 text-accent"
+                      : "border-transparent text-secondary hover:text-white",
                   )}
                   aria-pressed={active}
                 >
-                  {active ? (
-                    <motion.span
-                      layoutId={`filter-${tag}`}
-                      className="absolute inset-x-0 bottom-0 h-px bg-white/70"
-                      aria-hidden="true"
-                    />
-                  ) : null}
-                  <span className="relative z-10">{tag}</span>
+                  <span className="text-muted">[</span> {tag}{" "}
+                  <span className="text-muted">]</span>
                 </button>
               );
             })}
@@ -170,22 +164,22 @@ export function ProjectFilter({
           <motion.div
             key="project-grid"
             layout
-            className="grid grid-cols-1 gap-5 xl:grid-cols-2"
+            className="border-b border-border"
           >
             {visibleProjects.map((project, index) => (
               <motion.div
                 key={project.slug}
                 layout
-                initial={{ opacity: 0, y: 20, filter: "blur(6px)" }}
-                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                exit={{ opacity: 0, y: -16, filter: "blur(6px)" }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
                 transition={{
-                  duration: 0.55,
-                  delay: index * 0.03,
+                  duration: 0.35,
+                  delay: index * 0.04,
                   ease: [0.22, 1, 0.36, 1],
                 }}
               >
-                <ProjectCard project={project} />
+                <IndexRow project={project} index={index} />
               </motion.div>
             ))}
           </motion.div>
@@ -198,7 +192,7 @@ export function ProjectFilter({
             className="grid min-h-72 place-items-center rounded-card border border-dashed border-accent/25 bg-accent/[0.025] p-10 text-center"
           >
             <div>
-              <div className="mx-auto h-12 w-px bg-accent shadow-[0_0_22px_rgba(125,211,252,0.8)]" />
+              <div className="mx-auto h-12 w-px bg-accent shadow-[0_0_22px_rgba(74,222,128,0.8)]" />
               <p className="mt-6 font-mono text-sm uppercase tracking-[0.16em] text-white">
                 No matching projects
               </p>

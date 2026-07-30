@@ -15,12 +15,8 @@ export function AchievementBadge() {
 
   return (
     <MotionReveal className="container-page pb-28">
-      <article className="relative overflow-hidden rounded-card border border-white/[0.08] bg-surface/70 p-8">
-        <div
-          className="absolute right-0 top-0 h-40 w-40 bg-accent/[0.06] blur-3xl"
-          aria-hidden="true"
-        />
-        <SectionLabel>Achievement</SectionLabel>
+      <article className="relative border-y border-border py-10">
+        <SectionLabel>{">"} achievement</SectionLabel>
         <motion.div
           className="mt-7 grid h-14 w-14 place-items-center rounded-card border border-accent/30 bg-accent/10 text-accent"
           initial={{ scale: 0.4, rotate: -12, opacity: 0 }}

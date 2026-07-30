@@ -56,19 +56,11 @@ export function Navbar() {
         <MagneticWrapper strength={0.06}>
           <Link
             href="/"
-            className="relative grid h-11 w-16 place-items-center rounded-card border border-white/10 font-mono text-2xl font-bold text-white"
+            className="font-mono text-sm font-bold uppercase tracking-[0.18em] text-white"
             aria-label="Ashmeet Singh home"
             onClick={() => setOpen(false)}
           >
-            <span
-              className="absolute left-2 top-2 h-2 w-2 border-l border-t border-accent"
-              aria-hidden="true"
-            />
-            <span
-              className="absolute right-2 top-2 h-2 w-2 border-r border-t border-accent"
-              aria-hidden="true"
-            />
-            AS
+            Ashmeet Singh
           </Link>
         </MagneticWrapper>
 
@@ -88,7 +80,7 @@ export function Navbar() {
                 {active ? (
                   <motion.span
                     layoutId="nav-pill"
-                    className="absolute inset-x-3 bottom-0 h-px bg-accent shadow-[0_0_16px_rgba(125,211,252,0.9)]"
+                    className="absolute inset-x-3 bottom-0 h-px bg-accent shadow-[0_0_16px_rgba(74,222,128,0.9)]"
                     aria-hidden="true"
                   />
                 ) : null}
@@ -98,7 +90,10 @@ export function Navbar() {
           })}
         </div>
 
-        <div className="hidden items-center gap-3 md:flex">
+        <div className="hidden items-center gap-4 md:flex">
+          <span className="hidden font-mono text-[11px] uppercase tracking-[0.16em] text-muted xl:block">
+            Portfolio — Vol. 01 — 2026
+          </span>
           {profile.socials.map((item) => {
             const Icon =
               socialIcons[item.label as keyof typeof socialIcons] ?? Mail;

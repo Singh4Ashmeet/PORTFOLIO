@@ -6,8 +6,8 @@
     "subject": "Subject",
     "message": "Message"
   },
-  "button": "send message",
-  "loading": "sending",
+  "button": "send transmission",
+  "loading": "transmitting",
   "success": "Message sent! I'll get back to you soon.",
   "messageHelp": "Message must be at least 20 characters."
 }

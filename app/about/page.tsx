@@ -66,7 +66,7 @@ export default function AboutPage() {
               className="relative mt-12 overflow-hidden rounded-card border border-white/[0.08] bg-surface/60 p-7"
             >
               <div className="absolute left-0 top-0 h-full w-px bg-accent/70" />
-              <div className="absolute left-0 top-0 h-24 w-px bg-white shadow-[0_0_22px_rgba(125,211,252,0.8)]" />
+              <div className="absolute left-0 top-0 h-24 w-px bg-white shadow-[0_0_22px_rgba(74,222,128,0.8)]" />
               <SectionLabel>Education</SectionLabel>
               <h2 className="mt-5 text-2xl font-bold leading-tight text-white">
                 {profile.education.degree}

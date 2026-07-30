@@ -21,38 +21,22 @@ function StatCell({
   return (
     <motion.div
       ref={ref}
-      className="relative min-h-36 border-white/[0.06] px-5 py-7 lg:border-l lg:first:border-l-0"
+      className="border-t border-border px-5 py-8 first:border-t-0 sm:border-l sm:border-t-0 sm:first:border-l-0 lg:py-10"
       initial={{ opacity: 0, y: 18 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.35 }}
       transition={{
-        delay: index * 0.08,
+        delay: index * 0.07,
         duration: 0.56,
         ease: [0.22, 1, 0.36, 1],
       }}
     >
-      <span
-        className="absolute left-5 top-7 font-mono text-lg leading-none text-accent"
-        aria-hidden="true"
-      >
-        +
-      </span>
-      <div className="pt-7">
-        <p className="font-mono text-5xl leading-none text-white md:text-6xl">
-          {count}
-        </p>
-        <p className="mt-4 font-mono text-[11px] uppercase tracking-[0.12em] text-secondary">
-          {label}
-        </p>
-        <motion.span
-          className="mt-5 block h-px w-28 bg-accent shadow-[0_0_18px_rgba(125,211,252,0.8)]"
-          initial={{ scaleX: 0 }}
-          animate={inView ? { scaleX: 1 } : { scaleX: 0 }}
-          style={{ transformOrigin: "left" }}
-          transition={{ delay: 0.15 + index * 0.08, duration: 0.65 }}
-          aria-hidden="true"
-        />
-      </div>
+      <p className="font-mono text-4xl font-bold leading-none text-accent md:text-5xl">
+        {count}
+      </p>
+      <p className="mt-3 font-mono text-[11px] uppercase leading-relaxed tracking-[0.12em] text-secondary">
+        {label}
+      </p>
     </motion.div>
   );
 }
@@ -60,7 +44,7 @@ function StatCell({
 export function StatsStrip() {
   return (
     <section
-      className="border-y border-white/[0.06] bg-background"
+      className="border-y border-border bg-background"
       aria-label="Portfolio stats"
     >
       <div className="container-page grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5">

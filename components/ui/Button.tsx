@@ -21,7 +21,7 @@ const base =
 
 const variants = {
   solid:
-    "border border-accent/70 bg-accent text-background shadow-[0_0_28px_rgba(125,211,252,0.18)] hover:bg-white hover:text-background",
+    "border border-accent/70 bg-accent text-background shadow-[0_0_28px_rgba(74,222,128,0.18)] hover:bg-white hover:text-background",
   outline:
     "border border-white/20 bg-white/[0.025] text-secondary hover:border-accent/60 hover:text-white",
   ghost:

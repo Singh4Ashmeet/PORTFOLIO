@@ -89,7 +89,7 @@ export function ResumeViewer() {
         <div className="relative pl-8">
           <div className="absolute left-0 top-0 h-full w-px bg-white/[0.08]" />
           <motion.div
-            className="absolute left-0 top-0 h-full w-px origin-top bg-accent shadow-[0_0_18px_rgba(125,211,252,0.75)]"
+            className="absolute left-0 top-0 h-full w-px origin-top bg-accent shadow-[0_0_18px_rgba(74,222,128,0.75)]"
             initial={{ scaleY: 0 }}
             whileInView={{ scaleY: 1 }}
             viewport={{ once: true, amount: 0.12 }}
@@ -228,7 +228,7 @@ function TimelineSection({
   return (
     <MotionReveal as="section" className="relative mb-12 last:mb-0">
       <span
-        className="absolute -left-[37px] top-1 h-3 w-3 rounded-full border border-accent bg-background shadow-[0_0_18px_rgba(125,211,252,0.8)]"
+        className="absolute -left-[37px] top-1 h-3 w-3 rounded-full border border-accent bg-background shadow-[0_0_18px_rgba(74,222,128,0.8)]"
         aria-hidden="true"
       />
       <SectionLabel>{title}</SectionLabel>
